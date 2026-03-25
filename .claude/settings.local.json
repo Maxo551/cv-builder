@@ -12,7 +12,14 @@
       "mcp__e12aaaed-d82e-4f57-8ce4-07c61008455e__execute_sql",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "mcp__db1d23be-3062-4a37-8069-aec682ea0478__list_teams",
+      "mcp__db1d23be-3062-4a37-8069-aec682ea0478__list_projects",
+      "mcp__db1d23be-3062-4a37-8069-aec682ea0478__list_deployments",
+      "mcp__db1d23be-3062-4a37-8069-aec682ea0478__get_deployment_build_logs"
     ]
   }
 }

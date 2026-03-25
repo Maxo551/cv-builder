@@ -3,21 +3,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
 
-const STEPS = [
-    "Basic Info",
-    "Education",
-    "Experience",
-    "Skills",
-    "Languages",
-    "License",
-    "Certificates",
-    "Upload",
-    "GDPR",
-];
+const STEPS_EN = ["Basic Info", "Education", "Experience", "Skills", "Languages", "License", "Certificates", "Upload", "GDPR"];
+const STEPS_SK = ["Základné info", "Vzdelanie", "Skúsenosti", "Zručnosti", "Jazyky", "Vodičský preukaz", "Certifikáty", "Nahrať CV", "GDPR"];
 
 export default function WizardForm() {
     const router = useRouter();
+    const { lang, t } = useLanguage();
+    const STEPS = lang === "sk" ? STEPS_SK : STEPS_EN;
     const [currentStep, setCurrentStep] = useState(1);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<any>({
@@ -103,7 +97,7 @@ export default function WizardForm() {
             <div className="mb-8">
                 <div className="flex justify-between items-center mb-4">
                     <span className="text-sm font-medium text-slate-500">
-                        Step {currentStep} of {STEPS.length}
+                        Step {currentStep} {t("step.of")} {STEPS.length}
                     </span>
                     <span className="text-sm font-bold text-blue-600">
                         {STEPS[currentStep - 1]}
@@ -160,14 +154,14 @@ export default function WizardForm() {
                             : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                     )}
                 >
-                    Previous
+                    {t("step.previous")}
                 </button>
                 <button
                     onClick={isLastStep ? handleSubmit : nextStep}
                     disabled={loading}
                     className="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition shadow-md disabled:bg-blue-400"
                 >
-                    {loading ? "Submitting..." : isLastStep ? "Submit CV" : "Next Step"}
+                    {loading ? t("step.submitting") : isLastStep ? t("step.submit") : t("step.next")}
                 </button>
             </div>
         </div>
@@ -175,32 +169,33 @@ export default function WizardForm() {
 }
 
 function Step1({ data, update }: any) {
+    const { t } = useLanguage();
     return (
         <div className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-800">Basic Information</h2>
+            <h2 className="text-xl font-bold text-slate-800">{t("basic.title")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">First Name *</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.firstName")}</label>
                     <input
                         type="text"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.firstName}
                         onChange={(e) => update({ firstName: e.target.value })}
-                        placeholder="John"
+                        placeholder={t("basic.firstName.ph")}
                     />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Last Name *</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.lastName")}</label>
                     <input
                         type="text"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.lastName}
                         onChange={(e) => update({ lastName: e.target.value })}
-                        placeholder="Doe"
+                        placeholder={t("basic.lastName.ph")}
                     />
                 </div>
                 <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Email Address *</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.email")}</label>
                     <input
                         type="email"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
@@ -210,7 +205,7 @@ function Step1({ data, update }: any) {
                     />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.phone")}</label>
                     <input
                         type="tel"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
@@ -220,23 +215,23 @@ function Step1({ data, update }: any) {
                     />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">City / Region *</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.city")}</label>
                     <input
                         type="text"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.city}
                         onChange={(e) => update({ city: e.target.value })}
-                        placeholder="New York, NY"
+                        placeholder={t("basic.city.ph")}
                     />
                 </div>
                 <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Desired Position *</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.position")}</label>
                     <input
                         type="text"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.desiredPosition}
                         onChange={(e) => update({ desiredPosition: e.target.value })}
-                        placeholder="Software Engineer"
+                        placeholder={t("basic.position.ph")}
                     />
                 </div>
             </div>
@@ -245,6 +240,7 @@ function Step1({ data, update }: any) {
 }
 
 function Step2({ data, update }: any) {
+    const { t } = useLanguage();
     const addEducation = () => {
         const newEdu = {
             level: "BACHELOR",
@@ -271,18 +267,18 @@ function Step2({ data, update }: any) {
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold text-slate-800">Education</h2>
+                <h2 className="text-xl font-bold text-slate-800">{t("edu.title")}</h2>
                 <button
                     onClick={addEducation}
                     className="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 transition"
                 >
-                    + Add Education
+                    {t("edu.add")}
                 </button>
             </div>
 
             {data.education.length === 0 && (
                 <div className="text-center py-10 bg-slate-50 rounded-lg border border-dashed text-slate-400">
-                    No education added yet. Click "+ Add Education" to start.
+                    {t("edu.empty")}
                 </div>
             )}
 
@@ -296,7 +292,7 @@ function Step2({ data, update }: any) {
                     </button>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Level</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("edu.level")}</label>
                             <select
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                 value={edu.level}
@@ -311,28 +307,28 @@ function Step2({ data, update }: any) {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">School / University</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("edu.school")}</label>
                             <input
                                 type="text"
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                 value={edu.school}
                                 onChange={(e) => updateEduField(index, "school", e.target.value)}
-                                placeholder="Harvard University"
+                                placeholder={t("edu.school.ph")}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Field of Study</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("edu.field")}</label>
                             <input
                                 type="text"
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                 value={edu.field}
                                 onChange={(e) => updateEduField(index, "field", e.target.value)}
-                                placeholder="Computer Science"
+                                placeholder={t("edu.field.ph")}
                             />
                         </div>
                         <div className="grid grid-cols-2 gap-2">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Start Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t("edu.startDate")}</label>
                                 <input
                                     type="date"
                                     className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
@@ -341,7 +337,7 @@ function Step2({ data, update }: any) {
                                 />
                             </div>
                             <div className={edu.isCurrent ? "opacity-30 pointer-events-none" : ""}>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">End Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t("edu.endDate")}</label>
                                 <input
                                     type="date"
                                     className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
@@ -357,7 +353,7 @@ function Step2({ data, update }: any) {
                                 checked={edu.isCurrent}
                                 onChange={(e) => updateEduField(index, "isCurrent", e.target.checked)}
                             />
-                            <label className="text-sm text-slate-600">I am currently studying here</label>
+                            <label className="text-sm text-slate-600">{t("edu.current")}</label>
                         </div>
                     </div>
                 </div>
@@ -381,6 +377,7 @@ const INDUSTRIES = [
 ];
 
 function Step3({ data, update }: any) {
+    const { t } = useLanguage();
     const addExperience = () => {
         const newExp = {
             position: "",
@@ -409,18 +406,18 @@ function Step3({ data, update }: any) {
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold text-slate-800">Work Experience</h2>
+                <h2 className="text-xl font-bold text-slate-800">{t("exp.title")}</h2>
                 <button
                     onClick={addExperience}
                     className="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 transition"
                 >
-                    + Add Experience
+                    {t("exp.add")}
                 </button>
             </div>
 
             {data.workExperience.length === 0 && (
                 <div className="text-center py-10 bg-slate-50 rounded-lg border border-dashed text-slate-400">
-                    No experience added yet. Click "+ Add Experience" to start.
+                    {t("exp.empty")}
                 </div>
             )}
 
@@ -434,33 +431,33 @@ function Step3({ data, update }: any) {
                     </button>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Position</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.position")}</label>
                             <input
                                 type="text"
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                 value={exp.position}
                                 onChange={(e) => updateExpField(index, "position", e.target.value)}
-                                placeholder="Senior Developer"
+                                placeholder={t("exp.position.ph")}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Company</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.company")}</label>
                             <input
                                 type="text"
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                 value={exp.company}
                                 onChange={(e) => updateExpField(index, "company", e.target.value)}
-                                placeholder="Tech Corp Inc."
+                                placeholder={t("exp.company.ph")}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Industry</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.industry")}</label>
                             <select
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                 value={exp.industry}
                                 onChange={(e) => updateExpField(index, "industry", e.target.value)}
                             >
-                                <option value="">— Select industry —</option>
+                                <option value="">{t("exp.industry.select")}</option>
                                 {INDUSTRIES.map((ind) => (
                                     <option key={ind} value={ind}>{ind}</option>
                                 ))}
@@ -468,19 +465,19 @@ function Step3({ data, update }: any) {
                         </div>
                         {exp.industry === "Iné" && (
                             <div className="md:col-span-2">
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Enter industry</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.industry.custom")}</label>
                                 <input
                                     type="text"
                                     className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
                                     value={exp.industryCustom}
                                     onChange={(e) => updateExpField(index, "industryCustom", e.target.value)}
-                                    placeholder="e.g. IT, Marketing, Finance..."
+                                    placeholder={t("exp.industry.custom.ph")}
                                 />
                             </div>
                         )}
                         <div className="grid grid-cols-2 gap-2">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Start Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.startDate")}</label>
                                 <input
                                     type="date"
                                     className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
@@ -489,7 +486,7 @@ function Step3({ data, update }: any) {
                                 />
                             </div>
                             <div className={exp.isCurrent ? "opacity-30 pointer-events-none" : ""}>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">End Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.endDate")}</label>
                                 <input
                                     type="date"
                                     className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none text-slate-900"
@@ -505,15 +502,15 @@ function Step3({ data, update }: any) {
                                 checked={exp.isCurrent}
                                 onChange={(e) => updateExpField(index, "isCurrent", e.target.checked)}
                             />
-                            <label className="text-sm text-slate-600">I currently work here</label>
+                            <label className="text-sm text-slate-600">{t("exp.current")}</label>
                         </div>
                         <div className="md:col-span-2">
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+                            <label className="block text-sm font-medium text-slate-700 mb-1">{t("exp.description")}</label>
                             <textarea
                                 className="w-full px-3 py-1.5 border rounded-md focus:ring-1 focus:ring-blue-500 outline-none min-h-[100px] text-slate-900"
                                 value={exp.description}
                                 onChange={(e) => updateExpField(index, "description", e.target.value)}
-                                placeholder="Describe your responsibilities and achievements..."
+                                placeholder={t("exp.description.ph")}
                             />
                         </div>
                     </div>
@@ -524,6 +521,7 @@ function Step3({ data, update }: any) {
 }
 
 function Step4({ data, update }: any) {
+    const { t } = useLanguage();
     const predefinedSkills = [
         "Teamwork", "Communication", "Responsibility", "Reliability",
         "Physical fitness", "Machine operation", "Manual dexterity",
@@ -550,10 +548,10 @@ function Step4({ data, update }: any) {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold text-slate-800">Skills</h2>
+            <h2 className="text-xl font-bold text-slate-800">{t("skills.title")}</h2>
 
             <div>
-                <label className="block text-sm font-medium text-slate-700 mb-3">Core Skills</label>
+                <label className="block text-sm font-medium text-slate-700 mb-3">{t("skills.core")}</label>
                 <div className="flex flex-wrap gap-2">
                     {predefinedSkills.map((skill) => (
                         <button
@@ -573,14 +571,14 @@ function Step4({ data, update }: any) {
             </div>
 
             <div>
-                <label className="block text-sm font-medium text-slate-700 mb-3">Other Skills (press Enter to add)</label>
+                <label className="block text-sm font-medium text-slate-700 mb-3">{t("skills.other")}</label>
                 <input
                     type="text"
                     className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                     value={customSkill}
                     onChange={(e) => setCustomSkill(e.target.value)}
                     onKeyDown={addCustomSkill}
-                    placeholder="Type a skill and press Enter..."
+                    placeholder={t("skills.other.ph")}
                 />
                 <div className="flex flex-wrap gap-2 mt-4">
                     {data.skills.filter((s: string) => !predefinedSkills.includes(s)).map((skill: string) => (
@@ -599,6 +597,7 @@ function Step4({ data, update }: any) {
 }
 
 function Step5({ data, update }: any) {
+    const { t } = useLanguage();
     const levels = ["A1", "A2", "B1", "B2", "C1", "C2"];
     const commonLanguages = ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Russian", "Chinese", "Japanese", "Korean", "Polish", "Ukrainian", "Other"];
     const [newLang, setNewLang] = useState({ name: "English", level: "B1" });
@@ -619,7 +618,7 @@ function Step5({ data, update }: any) {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold text-slate-800">Languages</h2>
+            <h2 className="text-xl font-bold text-slate-800">{t("lang.title")}</h2>
 
             <div className="space-y-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
                 <div className="flex gap-4">
@@ -657,7 +656,7 @@ function Step5({ data, update }: any) {
                     onClick={addLanguage}
                     className="w-full py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
                 >
-                    + Add Language
+                    {t("lang.add")}
                 </button>
             </div>
 
@@ -679,6 +678,7 @@ function Step5({ data, update }: any) {
 }
 
 function Step6({ data, update }: any) {
+    const { t } = useLanguage();
     const licenseTypes = ["A", "B", "C", "D", "BE", "CE"];
 
     const toggleType = (type: string) => {
@@ -690,7 +690,7 @@ function Step6({ data, update }: any) {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold text-slate-800">Driver's License</h2>
+            <h2 className="text-xl font-bold text-slate-800">{t("license.title")}</h2>
             <div className="flex items-center mb-6">
                 <input
                     type="checkbox"
@@ -699,12 +699,12 @@ function Step6({ data, update }: any) {
                     checked={data.driversLicense.hasLicense}
                     onChange={(e) => update({ driversLicense: { ...data.driversLicense, hasLicense: e.target.checked } })}
                 />
-                <label htmlFor="has-license" className="text-lg text-slate-700">I have a driver's license</label>
+                <label htmlFor="has-license" className="text-lg text-slate-700">{t("license.has")}</label>
             </div>
 
             {data.driversLicense.hasLicense && (
                 <div className="space-y-3 p-4 bg-slate-50 rounded-lg border">
-                    <label className="block text-sm font-medium text-slate-700">License Types</label>
+                    <label className="block text-sm font-medium text-slate-700">{t("license.types")}</label>
                     <div className="flex flex-wrap gap-3">
                         {licenseTypes.map((type) => (
                             <button
@@ -728,6 +728,7 @@ function Step6({ data, update }: any) {
 }
 
 function Step7({ data, update }: any) {
+    const { t } = useLanguage();
     const addCert = () => {
         update({ certificates: [...data.certificates, { name: "", organization: "", year: new Date().getFullYear() }] });
     };
@@ -745,11 +746,17 @@ function Step7({ data, update }: any) {
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold text-slate-800">Certificates</h2>
+                <h2 className="text-xl font-bold text-slate-800">{t("cert.title")}</h2>
                 <button onClick={addCert} className="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md">
-                    + Add Certificate
+                    {t("cert.add")}
                 </button>
             </div>
+
+            {data.certificates.length === 0 && (
+                <div className="text-center py-10 bg-slate-50 rounded-lg border border-dashed text-slate-400">
+                    {t("cert.empty")}
+                </div>
+            )}
 
             <div className="space-y-4">
                 {data.certificates.map((cert: any, index: number) => (
@@ -757,7 +764,7 @@ function Step7({ data, update }: any) {
                         <button onClick={() => removeCert(index)} className="absolute top-2 right-2 text-slate-400 hover:text-red-500">✕</button>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700">Certificate Name</label>
+                                <label className="block text-sm font-medium text-slate-700">{t("cert.name")}</label>
                                 <input
                                     type="text"
                                     className="w-full px-3 py-1.5 border rounded-md text-slate-900"
@@ -767,7 +774,7 @@ function Step7({ data, update }: any) {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700">Organization</label>
+                                <label className="block text-sm font-medium text-slate-700">{t("cert.issuer")}</label>
                                 <input
                                     type="text"
                                     className="w-full px-3 py-1.5 border rounded-md text-slate-900"
@@ -777,7 +784,7 @@ function Step7({ data, update }: any) {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700">Year</label>
+                                <label className="block text-sm font-medium text-slate-700">{t("cert.year")}</label>
                                 <input
                                     type="number"
                                     className="w-full px-3 py-1.5 border rounded-md text-slate-900"
@@ -794,6 +801,7 @@ function Step7({ data, update }: any) {
 }
 
 function Step8({ data, update }: any) {
+    const { t } = useLanguage();
     const handleFileChange = (e: any) => {
         const file = e.target.files[0];
         if (file && file.size <= 10 * 1024 * 1024) { // 10MB
@@ -805,7 +813,8 @@ function Step8({ data, update }: any) {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold text-slate-800">Upload CV</h2>
+            <h2 className="text-xl font-bold text-slate-800">{t("upload.title")}</h2>
+            <p className="text-slate-500 text-sm">{t("upload.desc")}</p>
             <div className="p-8 border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 text-center">
                 <input
                     type="file"
@@ -817,19 +826,21 @@ function Step8({ data, update }: any) {
                 <label htmlFor="cv-upload" className="cursor-pointer flex flex-col items-center">
                     <span className="text-4xl mb-4 text-slate-400">📄</span>
                     <span className="text-lg font-medium text-slate-700">
-                        {data.cvFile ? data.cvFile.name : "Click to upload your CV (PDF or DOCX)"}
+                        {data.cvFile ? data.cvFile.name : t("upload.btn")}
                     </span>
                     <span className="text-sm text-slate-400 mt-2">Max 10MB</span>
                 </label>
             </div>
+            <p className="text-slate-400 text-xs">{t("upload.skip")}</p>
         </div>
     );
 }
 
 function Step9({ data, update }: any) {
+    const { t } = useLanguage();
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold text-slate-800">GDPR Consent</h2>
+            <h2 className="text-xl font-bold text-slate-800">{t("gdpr.title")}</h2>
             <div className="p-6 bg-slate-50 rounded-xl border border-slate-200">
                 <div className="flex items-start">
                     <input
@@ -840,7 +851,7 @@ function Step9({ data, update }: any) {
                         onChange={(e) => update({ gdprConsent: e.target.checked })}
                     />
                     <label htmlFor="gdpr" className="text-slate-700 leading-relaxed">
-                        I hereby give my consent for the processing of my personal data included in this application for the purpose of the recruitment process under the General Data Protection Regulation (EU) 2016/679. I understand that I can withdraw my consent at any time.
+                        {t("gdpr.text")}
                     </label>
                 </div>
             </div>
