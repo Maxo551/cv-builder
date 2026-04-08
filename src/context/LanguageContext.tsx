@@ -110,8 +110,13 @@ const translations: Record<string, Record<Lang, string>> = {
     "upload.skip": { en: "You can skip this step if you don't have a file to upload.", sk: "Tento krok môžete preskočiť ak nemáte súbor na nahranie." },
 
     // Step 9 - GDPR
-    "gdpr.title": { en: "Privacy & Consent", sk: "Súhlas so spracovaním" },
-    "gdpr.text": { en: "I agree to the processing of my personal data for recruitment purposes.", sk: "Súhlasím so spracovaním mojich osobných údajov na účely náboru." },
+    "gdpr.title": { en: "Privacy & Consent", sk: "Súhlas so spracovaním osobných údajov" },
+    "gdpr.consent.label": {
+        en: "By checking this box, as the data subject identified in this form, I give consent to RELATED SERVICES s.r.o., registered office: Garbiarska 4, 031 01 Liptovský Mikuláš, IČO: 47 699 809 to include me in the job applicant database and to process my personal data (name, surname, date of birth, contact details, education and work experience, and other data in my CV) for the purpose of maintaining the candidate database and finding suitable job candidates, for a period of 5 years. I confirm that I have read and understood the Privacy Policy.",
+        sk: "Odkliknutím tejto položky ako fyzická osoba identifikovaná v tomto elektronickom formulári udeľujem súhlas spoločnosti RELATED SERVICES s.r.o., sídlo: Ul. Garbiarska 4, 031 01 Liptovský Mikuláš, IČO: 47 699 809, aby ma zaradili do databázy uchádzačov o zamestnanie a v tej súvislosti spracovávali moje osobné údaje v rozsahu: meno, priezvisko, dátum narodenia, kontaktné údaje, údaje o dosiahnutom vzdelaní a pracovných skúsenostiach a ďalšie údaje uvedené v mojom životopise, na účely vedenia databázy a vyhľadávania vhodných kandidátov, na dobu 5 rokov. Potvrdzujem, že som si prečítal/a Zásady spracúvania osobných údajov."
+    },
+    "gdpr.policy.link": { en: "Read full Privacy Policy", sk: "Prečítať Zásady spracúvania osobných údajov" },
+    "gdpr.required": { en: "You must accept the consent to submit your CV.", sk: "Pre odoslanie životopisu musíte udeliť súhlas." },
 };
 
 const LanguageContext = createContext<LanguageContextType>({

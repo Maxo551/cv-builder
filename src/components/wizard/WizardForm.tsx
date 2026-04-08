@@ -841,20 +841,42 @@ function Step9({ data, update }: any) {
     return (
         <div className="space-y-6">
             <h2 className="text-xl font-bold text-slate-800">{t("gdpr.title")}</h2>
-            <div className="p-6 bg-slate-50 rounded-xl border border-slate-200">
-                <div className="flex items-start">
+
+            {/* Full privacy policy link */}
+            <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 flex items-center justify-between">
+                <span className="text-sm text-slate-600">RELATED SERVICES s.r.o. — Garbiarska 4, 031 01 Liptovský Mikuláš</span>
+                <a
+                    href="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-4 whitespace-nowrap text-sm font-bold text-blue-600 hover:underline"
+                >
+                    {t("gdpr.policy.link")} →
+                </a>
+            </div>
+
+            {/* Consent checkbox */}
+            <div className={cn(
+                "p-6 rounded-xl border-2 transition",
+                data.gdprConsent ? "bg-green-50 border-green-300" : "bg-slate-50 border-slate-200"
+            )}>
+                <div className="flex items-start gap-4">
                     <input
                         type="checkbox"
                         id="gdpr"
-                        className="w-6 h-6 mr-4 mt-1"
+                        className="w-5 h-5 mt-1 accent-blue-600 cursor-pointer flex-shrink-0"
                         checked={data.gdprConsent}
                         onChange={(e) => update({ gdprConsent: e.target.checked })}
                     />
-                    <label htmlFor="gdpr" className="text-slate-700 leading-relaxed">
-                        {t("gdpr.text")}
+                    <label htmlFor="gdpr" className="text-slate-700 leading-relaxed text-sm cursor-pointer">
+                        {t("gdpr.consent.label")}
                     </label>
                 </div>
             </div>
+
+            {!data.gdprConsent && (
+                <p className="text-xs text-red-500 font-medium">{t("gdpr.required")}</p>
+            )}
         </div>
     );
 }
