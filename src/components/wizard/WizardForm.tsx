@@ -843,13 +843,12 @@ function Step9({ data, update }: any) {
             <h2 className="text-xl font-bold text-slate-800">{t("gdpr.title")}</h2>
 
             {/* Full privacy policy link */}
-            <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 flex items-center justify-between">
-                <span className="text-sm text-slate-600">RELATED SERVICES s.r.o. — Garbiarska 4, 031 01 Liptovský Mikuláš</span>
+            <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
                 <a
                     href="/privacy-policy"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-4 whitespace-nowrap text-sm font-bold text-blue-600 hover:underline"
+                    className="text-sm font-bold text-blue-600 hover:underline"
                 >
                     {t("gdpr.policy.link")} →
                 </a>
