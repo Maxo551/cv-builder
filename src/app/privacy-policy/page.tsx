@@ -18,15 +18,15 @@ const SK = () => (
 
         <section>
             <h2 className="text-base font-bold text-slate-900 mb-3">I. Identifikácia prevádzkovateľa</h2>
-            <p className="mb-2">Prevádzkovateľom, ktorý určuje účel a prostriedky spracúvania osobných údajov, je spoločnosť:</p>
+            <p className="mb-2">Prevádzkovateľom, ktorý určuje účel a prostriedky spracúvania osobných údajov, je združenie:</p>
             <div className="space-y-1">
-                <p><strong>Obchodné meno:</strong> RELATED SERVICES s.r.o.</p>
-                <p><strong>Sídlo:</strong> Ul. Garbiarska 4, 031 01 Liptovský Mikuláš</p>
-                <p><strong>IČO:</strong> 47 699 809</p>
-                <p><strong>DIČ:</strong> 2024068981</p>
-                <p><strong>Zápis:</strong> Spoločnosť zapísal Okresný súd Žilina do Obchodného registra pod číslom Sro/66922/L</p>
-                <p><strong>E-mail:</strong> info@relatedservices.sk</p>
-                <p><strong>Telefón:</strong> 0940 484 855</p>
+                <p><strong>Názov združenia:</strong> Asociácia pre podporu zamestnanosti</p>
+                <p><strong>Právna forma:</strong> Občianske združenie, odborová organizácia a organizácia zamestnávateľov</p>
+                <p><strong>IČO:</strong> 42417261</p>
+                <p><strong>Sídlo:</strong> Škultétyho 1, 831 03 Bratislava-Nové Mesto</p>
+                <p><strong>Webové sídlo:</strong> Neuvedené</p>
+                <p><strong>Registračné číslo:</strong> VVS/1-900/90-45357</p>
+                <p><strong>Registrový úrad:</strong> Okresný úrad Bratislava</p>
             </div>
         </section>
 
@@ -82,7 +82,7 @@ const SK = () => (
                 <li>Právo odvolať súhlas (čl. 7 ods. 3 GDPR) kedykoľvek, ak sa spracúvanie zakladá na súhlase.</li>
             </ul>
             <p className="mt-3">
-                Svoje práva si môže dotknutá osoba uplatniť písomne na adrese sídla prevádzkovateľa alebo elektronicky na e-mailovej adrese info@relatedservices.sk. Prevádzkovateľ vybaví žiadosť bez zbytočného odkladu, najneskôr však do jedného mesiaca od jej doručenia.
+                Svoje práva si môže dotknutá osoba uplatniť písomne na adrese sídla prevádzkovateľa. Prevádzkovateľ vybaví žiadosť bez zbytočného odkladu, najneskôr však do jedného mesiaca od jej doručenia.
             </p>
             <p className="mt-2">
                 Ak sa dotknutá osoba domnieva, že pri spracúvaní osobných údajov došlo k porušeniu jej práv, má právo podať sťažnosť dozornému orgánu, ktorým je Úrad na ochranu osobných údajov Slovenskej republiky, Hraničná 12, 820 07 Bratislava, e-mail: statny.dozor@pdp.gov.sk.
@@ -106,15 +106,15 @@ const EN = () => (
 
         <section>
             <h2 className="text-base font-bold text-slate-900 mb-3">I. Identification of the Controller</h2>
-            <p className="mb-2">The controller, who determines the purpose and means of processing personal data, is the company:</p>
+            <p className="mb-2">The controller, who determines the purpose and means of processing personal data, is the association:</p>
             <div className="space-y-1">
-                <p><strong>Company name:</strong> RELATED SERVICES s.r.o.</p>
-                <p><strong>Registered office:</strong> Ul. Garbiarska 4, 031 01 Liptovský Mikuláš</p>
-                <p><strong>Company ID (IČO):</strong> 47 699 809</p>
-                <p><strong>VAT ID (DIČ):</strong> 2024068981</p>
-                <p><strong>Registration:</strong> The company was registered by the District Court Žilina in the Commercial Register under number Sro/66922/L</p>
-                <p><strong>E-mail:</strong> info@relatedservices.sk</p>
-                <p><strong>Phone:</strong> 0940 484 855</p>
+                <p><strong>Association name:</strong> Asociácia pre podporu zamestnanosti</p>
+                <p><strong>Legal form:</strong> Civic association, trade union organisation and employers&apos; organisation</p>
+                <p><strong>Company ID (IČO):</strong> 42417261</p>
+                <p><strong>Registered office:</strong> Škultétyho 1, 831 03 Bratislava-Nové Mesto</p>
+                <p><strong>Website:</strong> Not specified</p>
+                <p><strong>Registration number:</strong> VVS/1-900/90-45357</p>
+                <p><strong>Registry authority:</strong> District Office Bratislava</p>
             </div>
         </section>
 
@@ -170,7 +170,7 @@ const EN = () => (
                 <li>Right to withdraw consent (Art. 7(3) GDPR) at any time, if processing is based on consent.</li>
             </ul>
             <p className="mt-3">
-                The data subject may exercise their rights in writing at the controller's registered office address or electronically at the e-mail address info@relatedservices.sk. The controller will handle the request without undue delay, but no later than one month from its receipt.
+                The data subject may exercise their rights in writing at the controller&apos;s registered office address. The controller will handle the request without undue delay, but no later than one month from its receipt.
             </p>
             <p className="mt-2">
                 If the data subject believes that their rights have been violated in the processing of personal data, they have the right to lodge a complaint with the supervisory authority, which is the Office for Personal Data Protection of the Slovak Republic, Hraničná 12, 820 07 Bratislava, e-mail: statny.dozor@pdp.gov.sk.
@@ -210,7 +210,7 @@ export default function PrivacyPolicyPage() {
                 </div>
 
                 <p className="text-center text-slate-400 text-xs mt-8">
-                    © {new Date().getFullYear()} RELATED SERVICES s.r.o. — IČO: 47 699 809
+                    © {new Date().getFullYear()} Asociácia pre podporu zamestnanosti — IČO: 42417261
                 </p>
             </div>
         </div>
