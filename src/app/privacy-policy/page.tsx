@@ -24,7 +24,7 @@ const SK = () => (
                 <p><strong>Právna forma:</strong> Občianske združenie, odborová organizácia a organizácia zamestnávateľov</p>
                 <p><strong>IČO:</strong> 42417261</p>
                 <p><strong>Sídlo:</strong> Škultétyho 1, 831 03 Bratislava-Nové Mesto</p>
-                <p><strong>Webové sídlo:</strong> Neuvedené</p>
+                <p><strong>Telefón:</strong> +421 948 708 470</p>
                 <p><strong>Registračné číslo:</strong> VVS/1-900/90-45357</p>
                 <p><strong>Registrový úrad:</strong> Okresný úrad Bratislava</p>
             </div>
@@ -112,7 +112,7 @@ const EN = () => (
                 <p><strong>Legal form:</strong> Civic association, trade union organisation and employers&apos; organisation</p>
                 <p><strong>Company ID (IČO):</strong> 42417261</p>
                 <p><strong>Registered office:</strong> Škultétyho 1, 831 03 Bratislava-Nové Mesto</p>
-                <p><strong>Website:</strong> Not specified</p>
+                <p><strong>Phone:</strong> +421 948 708 470</p>
                 <p><strong>Registration number:</strong> VVS/1-900/90-45357</p>
                 <p><strong>Registry authority:</strong> District Office Bratislava</p>
             </div>
