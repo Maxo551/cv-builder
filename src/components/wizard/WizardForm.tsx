@@ -679,7 +679,8 @@ function Step5({ data, update }: any) {
 
 function Step6({ data, update }: any) {
     const { t } = useLanguage();
-    const licenseTypes = ["A", "B", "C", "D", "BE", "CE"];
+    const [customType, setCustomType] = useState("");
+    const licenseTypes = ["A", "B", "C", "D", "BE", "CE", "T"];
 
     const toggleType = (type: string) => {
         const types = data.driversLicense.types.includes(type)
@@ -687,6 +688,26 @@ function Step6({ data, update }: any) {
             : [...data.driversLicense.types, type];
         update({ driversLicense: { ...data.driversLicense, types } });
     };
+
+    const addCustomType = () => {
+        const normalizedType = customType.trim().toUpperCase();
+        if (!normalizedType || data.driversLicense.types.includes(normalizedType)) {
+            setCustomType("");
+            return;
+        }
+
+        update({
+            driversLicense: {
+                ...data.driversLicense,
+                types: [...data.driversLicense.types, normalizedType],
+            },
+        });
+        setCustomType("");
+    };
+
+    const customSelectedTypes = data.driversLicense.types.filter(
+        (type: string) => !licenseTypes.includes(type)
+    );
 
     return (
         <div className="space-y-6">
@@ -709,6 +730,7 @@ function Step6({ data, update }: any) {
                         {licenseTypes.map((type) => (
                             <button
                                 key={type}
+                                type="button"
                                 onClick={() => toggleType(type)}
                                 className={cn(
                                     "px-6 py-2 rounded-lg border font-bold transition",
@@ -721,6 +743,44 @@ function Step6({ data, update }: any) {
                             </button>
                         ))}
                     </div>
+
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <input
+                            type="text"
+                            value={customType}
+                            onChange={(e) => setCustomType(e.target.value.toUpperCase())}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    e.preventDefault();
+                                    addCustomType();
+                                }
+                            }}
+                            placeholder={t("license.custom.ph")}
+                            className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900 bg-white"
+                        />
+                        <button
+                            type="button"
+                            onClick={addCustomType}
+                            className="px-5 py-2 bg-white text-blue-600 border border-blue-200 rounded-lg font-medium hover:bg-blue-50 transition"
+                        >
+                            {t("license.custom.add")}
+                        </button>
+                    </div>
+
+                    {customSelectedTypes.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                            {customSelectedTypes.map((type: string) => (
+                                <button
+                                    key={type}
+                                    type="button"
+                                    onClick={() => toggleType(type)}
+                                    className="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm font-bold border border-blue-200"
+                                >
+                                    {type} ×
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
         </div>

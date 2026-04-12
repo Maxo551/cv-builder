@@ -94,6 +94,8 @@ const translations: Record<string, Record<Lang, string>> = {
     "license.title": { en: "Driver's License", sk: "Vodičský preukaz" },
     "license.has": { en: "I have a driver's license", sk: "Mám vodičský preukaz" },
     "license.types": { en: "License Types", sk: "Kategórie preukazu" },
+    "license.custom.ph": { en: "Add custom type, e.g. G or tractor", sk: "Doplňte vlastný typ, napr. G alebo traktor" },
+    "license.custom.add": { en: "Add Type", sk: "Pridať typ" },
 
     // Step 7 - Certificates
     "cert.title": { en: "Certificates & Courses", sk: "Certifikáty a kurzy" },
