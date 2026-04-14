@@ -20,6 +20,9 @@ enum EducationLevel {
 enum AdminStatus {
   NEW
   CONTACTED
+  REVIEWING
+  INTERVIEWED
+  ON_HOLD
   SENT
   HIRED
   STARTED
@@ -140,7 +143,9 @@ model Attachment {
   candidateId String
   fileName    String
   mimeType    String   // PDF, DOCX, etc.
-  filePath    String
+  filePath    String?
+  fileData    Bytes?
+  storageType String   @default("DATABASE")
   fileSize    Int
   createdAt   DateTime @default(now())
 

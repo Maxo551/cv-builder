@@ -11,13 +11,19 @@ export async function GET(
     try {
         // 1. Check Auth
         const token = req.cookies.get("admin_token")?.value;
-        if (!token || !verifyToken(token)) {
+        if (!token || !(await verifyToken(token))) {
             return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
         }
 
         // 2. Get Attachment info
         const attachment = await prisma.attachment.findUnique({
             where: { id: params.id },
+            select: {
+                fileName: true,
+                mimeType: true,
+                filePath: true,
+                fileData: true,
+            },
         });
 
         if (!attachment) {
@@ -25,8 +31,15 @@ export async function GET(
         }
 
         // 3. Read File
-        const filePath = join(process.cwd(), "uploads", attachment.filePath);
-        const fileBuffer = await readFile(filePath);
+        const fileBuffer = attachment.fileData
+            ? Buffer.from(attachment.fileData)
+            : attachment.filePath
+                ? await readFile(join(process.cwd(), "uploads", attachment.filePath))
+                : null;
+
+        if (!fileBuffer) {
+            return NextResponse.json({ success: false, message: "Stored file not found" }, { status: 404 });
+        }
 
         // 4. Return as stream
         return new NextResponse(fileBuffer, {

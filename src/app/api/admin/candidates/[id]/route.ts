@@ -28,7 +28,17 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
                 certificates: { orderBy: { year: "desc" } },
                 skills: { include: { skill: true } },
                 languages: { include: { language: true } },
-                attachments: true,
+                attachments: {
+                    select: {
+                        id: true,
+                        fileName: true,
+                        mimeType: true,
+                        filePath: true,
+                        fileSize: true,
+                        storageType: true,
+                        createdAt: true,
+                    },
+                },
             },
         });
         if (!candidate) return NextResponse.json({ success: false, message: "Candidate not found" }, { status: 404 });

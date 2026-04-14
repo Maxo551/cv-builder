@@ -231,7 +231,9 @@ export async function POST(req: NextRequest) {
                     data: {
                         candidateId: candidate.id,
                         fileName: fileInfo.fileName,
-                        filePath: fileInfo.storedName, // Store UUID name in DB relative to /uploads
+                        filePath: fileInfo.filePath,
+                        fileData: fileInfo.fileData,
+                        storageType: fileInfo.storageType,
                         fileSize: fileInfo.fileSize,
                         mimeType: fileInfo.mimeType,
                     }
@@ -289,15 +291,25 @@ export async function POST(req: NextRequest) {
         console.error("Stack:", error?.stack);
 
         // User-friendly message
-        const isDbError =
-            error?.message?.includes("database") ||
-            error?.message?.includes("prisma") ||
-            error?.message?.includes("tenant") ||
-            error?.code?.startsWith("P");
+        const prismaCode = typeof error?.code === "string" ? error.code : "";
+        const duplicateTarget = Array.isArray(error?.meta?.target) ? error.meta.target.join(", ") : "";
+        const errorMessage = typeof error?.message === "string" ? error.message : "";
+        const isConnectionError =
+            prismaCode === "P1001" ||
+            prismaCode === "P1002" ||
+            prismaCode === "P2024" ||
+            errorMessage.includes("Can't reach database server") ||
+            errorMessage.includes("Timed out fetching a new connection");
 
-        const userMessage = isDbError
-            ? "Database connection error. Please try again later."
-            : error.message || "Internal server error";
+        let userMessage = errorMessage || "Internal server error";
+
+        if (prismaCode === "P2002") {
+            userMessage = duplicateTarget.includes("email")
+                ? "A CV with this email already exists. The candidate is already in the admin dashboard."
+                : "This candidate already exists.";
+        } else if (isConnectionError) {
+            userMessage = "Database connection error. Please try again later.";
+        }
 
         return NextResponse.json({ success: false, message: userMessage }, { status: 500 });
     }

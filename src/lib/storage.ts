@@ -1,32 +1,39 @@
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
-import { v4 as uuidv4 } from "uuid";
+const MAX_UPLOAD_SIZE_BYTES = 10 * 1024 * 1024;
+const ALLOWED_EXTENSIONS = new Set(["pdf", "docx"]);
+const MIME_TYPES_BY_EXTENSION: Record<string, string> = {
+    pdf: "application/pdf",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+};
 
-const UPLOAD_DIR = join(process.cwd(), "uploads");
+function getFileExtension(fileName: string) {
+    return fileName.split(".").pop()?.toLowerCase() ?? "";
+}
 
 export async function saveFile(file: File) {
-    try {
-        // Ensure directory exists
-        await mkdir(UPLOAD_DIR, { recursive: true });
+    const fileExtension = getFileExtension(file.name);
 
+    if (!ALLOWED_EXTENSIONS.has(fileExtension)) {
+        throw new Error("Only PDF and DOCX files are supported.");
+    }
+
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) {
+        throw new Error("File is too large. Max 10MB allowed.");
+    }
+
+    try {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        const fileExtension = file.name.split(".").pop();
-        const fileName = `${uuidv4()}.${fileExtension}`;
-        const filePath = join(UPLOAD_DIR, fileName);
-
-        await writeFile(filePath, buffer);
-
         return {
             fileName: file.name,
-            storedName: fileName,
-            filePath,
+            filePath: null,
+            fileData: buffer,
             fileSize: file.size,
-            mimeType: file.type,
+            mimeType: file.type || MIME_TYPES_BY_EXTENSION[fileExtension] || "application/octet-stream",
+            storageType: "DATABASE",
         };
     } catch (error) {
-        console.error("Error saving file:", error);
+        console.error("Error preparing file:", error);
         throw new Error("Failed to save file.");
     }
 }
