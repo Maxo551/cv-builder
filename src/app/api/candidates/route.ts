@@ -6,6 +6,29 @@ import { CandidateSchema } from "@/lib/validations";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { saveFile } from "@/lib/storage";
 
+function getStringField(formData: FormData, fieldName: string) {
+    const value = formData.get(fieldName);
+    return typeof value === "string" ? value.trim() : "";
+}
+
+function parseJsonField<T>(formData: FormData, fieldName: string, fallback: T): T {
+    const value = formData.get(fieldName);
+
+    if (typeof value !== "string" || value.trim() === "") {
+        return fallback;
+    }
+
+    try {
+        return JSON.parse(value) as T;
+    } catch {
+        return fallback;
+    }
+}
+
+function hasText(value: unknown) {
+    return typeof value === "string" && value.trim().length > 0;
+}
+
 export async function POST(req: NextRequest) {
     try {
         const ip = req.ip || "anonymous";
@@ -16,28 +39,126 @@ export async function POST(req: NextRequest) {
         const formData = await req.formData();
 
         // Extract JSON fields
-        const firstName = formData.get("firstName") as string;
-        const lastName = formData.get("lastName") as string;
-        const email = formData.get("email") as string;
-        const phone = formData.get("phone") as string;
-        const city = formData.get("city") as string;
-        const desiredPosition = formData.get("desiredPosition") as string;
+        const firstName = getStringField(formData, "firstName");
+        const lastName = getStringField(formData, "lastName");
+        const email = getStringField(formData, "email");
+        const phone = getStringField(formData, "phone");
+        const city = getStringField(formData, "city");
+        const desiredPosition = getStringField(formData, "desiredPosition");
         const gdprConsent = formData.get("gdprConsent") === "true";
         const hasDriversLicense = formData.get("hasDriversLicense") === "true";
-        const driversLicenseTypes = JSON.parse(formData.get("driversLicenseTypes") as string || "[]");
+        const driversLicenseTypes = Array.from(
+            new Set(
+                parseJsonField<string[]>(formData, "driversLicenseTypes", [])
+                    .map((type) => (typeof type === "string" ? type.trim().toUpperCase() : ""))
+                    .filter(Boolean)
+            )
+        );
 
-        const education = JSON.parse(formData.get("education") as string || "[]");
-        const workExperience = JSON.parse(formData.get("workExperience") as string || "[]");
-        const skills = JSON.parse(formData.get("skills") as string || "[]");
-        const languages = JSON.parse(formData.get("languages") as string || "[]");
-        const certificates = JSON.parse(formData.get("certificates") as string || "[]");
+        const education = parseJsonField<any[]>(formData, "education", [])
+            .map((edu) => ({
+                ...edu,
+                school: typeof edu?.school === "string" ? edu.school.trim() : "",
+                field: typeof edu?.field === "string" ? edu.field.trim() : "",
+                startDate: typeof edu?.startDate === "string" ? edu.startDate.trim() : "",
+                endDate: typeof edu?.endDate === "string" ? edu.endDate.trim() : "",
+            }))
+            .filter((edu) =>
+                hasText(edu.school) ||
+                hasText(edu.field) ||
+                hasText(edu.startDate) ||
+                hasText(edu.endDate)
+            );
+
+        const workExperience = parseJsonField<any[]>(formData, "workExperience", [])
+            .map((exp) => ({
+                ...exp,
+                position: typeof exp?.position === "string" ? exp.position.trim() : "",
+                company: typeof exp?.company === "string" ? exp.company.trim() : "",
+                industry: typeof exp?.industry === "string" ? exp.industry.trim() : "",
+                industryCustom: typeof exp?.industryCustom === "string" ? exp.industryCustom.trim() : "",
+                startDate: typeof exp?.startDate === "string" ? exp.startDate.trim() : "",
+                endDate: typeof exp?.endDate === "string" ? exp.endDate.trim() : "",
+                description: typeof exp?.description === "string" ? exp.description.trim() : "",
+            }))
+            .filter((exp) =>
+                hasText(exp.position) ||
+                hasText(exp.company) ||
+                hasText(exp.industry) ||
+                hasText(exp.industryCustom) ||
+                hasText(exp.startDate) ||
+                hasText(exp.endDate) ||
+                hasText(exp.description)
+            );
+
+        const skills = Array.from(
+            new Set(
+                parseJsonField<string[]>(formData, "skills", [])
+                    .map((skill) => (typeof skill === "string" ? skill.trim() : ""))
+                    .filter(Boolean)
+            )
+        );
+
+        const languages = parseJsonField<any[]>(formData, "languages", [])
+            .map((lang) => ({
+                ...lang,
+                name: typeof lang?.name === "string" ? lang.name.trim() : "",
+            }))
+            .filter((lang) => hasText(lang.name));
+
+        const certificates = parseJsonField<any[]>(formData, "certificates", [])
+            .map((cert) => ({
+                ...cert,
+                name: typeof cert?.name === "string" ? cert.name.trim() : "",
+                organization: typeof cert?.organization === "string" ? cert.organization.trim() : "",
+            }))
+            .filter((cert) => hasText(cert.name) || hasText(cert.organization));
 
         const cvFile = formData.get("cvFile") as File | null;
 
-        // 1. Validate basic data (Partial validation since we manually parsed)
-        // In a full app, we'd use a more robust FormData validation library
-        if (!firstName || !lastName || !email || !city || !desiredPosition) {
-            return NextResponse.json({ success: false, message: "Missing required fields" }, { status: 400 });
+        const payload = {
+            firstName,
+            lastName,
+            email,
+            phone,
+            city,
+            desiredPosition,
+            hasDriversLicense,
+            driversLicenseTypes,
+            highestEducationLevel: education.length > 0 ? education[0].level : "PRIMARY",
+            gdprConsent,
+            education,
+            workExperience,
+            skills,
+            languages,
+            certificates,
+        };
+
+        const validation = CandidateSchema.safeParse(payload);
+        if (!validation.success) {
+            const requiredFieldLabels: Record<string, string> = {
+                firstName: "first name",
+                lastName: "last name",
+                email: "email",
+                city: "city",
+                desiredPosition: "desired position",
+                gdprConsent: "GDPR consent",
+            };
+            const missingFields = Array.from(
+                new Set(
+                    validation.error.issues
+                        .map((issue) => issue.path[0])
+                        .filter((field): field is string => typeof field === "string")
+                        .map((field) => requiredFieldLabels[field] || field)
+                )
+            );
+
+            return NextResponse.json({
+                success: false,
+                message: missingFields.length > 0
+                    ? `Please complete: ${missingFields.join(", ")}`
+                    : "Invalid form data",
+            }, { status: 400 });
         }
 
         // 2. Generate Share Token

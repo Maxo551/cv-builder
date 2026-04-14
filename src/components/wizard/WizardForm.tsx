@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
@@ -41,20 +41,53 @@ export default function WizardForm() {
         setFormData((prev: any) => ({ ...prev, ...data }));
     };
 
+    const getMissingBasicFields = () => {
+        const requiredFields = [
+            { key: "firstName", label: t("basic.firstName").replace(" *", "") },
+            { key: "lastName", label: t("basic.lastName").replace(" *", "") },
+            { key: "email", label: t("basic.email").replace(" *", "") },
+            { key: "city", label: t("basic.city").replace(" *", "") },
+            { key: "desiredPosition", label: t("basic.position").replace(" *", "") },
+        ];
+
+        return requiredFields.filter(({ key }) => !String(formData[key] ?? "").trim());
+    };
+
     const isLastStep = currentStep === STEPS.length;
 
     const handleSubmit = async () => {
+        const missingBasicFields = getMissingBasicFields();
+        if (missingBasicFields.length > 0) {
+            setCurrentStep(1);
+            alert(`Please fill in: ${missingBasicFields.map(({ label }) => label).join(", ")}`);
+            return;
+        }
+
+        if (!formData.gdprConsent) {
+            setCurrentStep(STEPS.length);
+            alert(t("gdpr.required"));
+            return;
+        }
+
         setLoading(true);
         try {
             const data = new FormData();
+            const trimmedBasicInfo = {
+                firstName: formData.firstName.trim(),
+                lastName: formData.lastName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                city: formData.city.trim(),
+                desiredPosition: formData.desiredPosition.trim(),
+            };
 
             // Append basic fields
-            data.append("firstName", formData.firstName);
-            data.append("lastName", formData.lastName);
-            data.append("email", formData.email);
-            data.append("phone", formData.phone);
-            data.append("city", formData.city);
-            data.append("desiredPosition", formData.desiredPosition);
+            data.append("firstName", trimmedBasicInfo.firstName);
+            data.append("lastName", trimmedBasicInfo.lastName);
+            data.append("email", trimmedBasicInfo.email);
+            data.append("phone", trimmedBasicInfo.phone);
+            data.append("city", trimmedBasicInfo.city);
+            data.append("desiredPosition", trimmedBasicInfo.desiredPosition);
             data.append("gdprConsent", formData.gdprConsent.toString());
             data.append("hasDriversLicense", formData.driversLicense.hasLicense.toString());
             data.append("driversLicenseTypes", JSON.stringify(formData.driversLicense.types));
@@ -170,6 +203,50 @@ export default function WizardForm() {
 
 function Step1({ data, update }: any) {
     const { t } = useLanguage();
+    const firstNameRef = useRef<HTMLInputElement>(null);
+    const lastNameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const phoneRef = useRef<HTMLInputElement>(null);
+    const cityRef = useRef<HTMLInputElement>(null);
+    const desiredPositionRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const refs = [
+            { key: "firstName", ref: firstNameRef },
+            { key: "lastName", ref: lastNameRef },
+            { key: "email", ref: emailRef },
+            { key: "phone", ref: phoneRef },
+            { key: "city", ref: cityRef },
+            { key: "desiredPosition", ref: desiredPositionRef },
+        ];
+
+        const syncAutofillValues = () => {
+            const nextValues: Record<string, string> = {};
+
+            refs.forEach(({ key, ref }) => {
+                const value = ref.current?.value ?? "";
+                if (value && value !== data[key]) {
+                    nextValues[key] = value;
+                }
+            });
+
+            if (Object.keys(nextValues).length > 0) {
+                update(nextValues);
+            }
+        };
+
+        syncAutofillValues();
+        const timeouts = [150, 500, 1200].map((delay) => window.setTimeout(syncAutofillValues, delay));
+
+        return () => {
+            timeouts.forEach((timeoutId) => window.clearTimeout(timeoutId));
+        };
+    }, [data, update]);
+
+    const handleFieldUpdate = (field: string, value: string) => {
+        update({ [field]: value });
+    };
+
     return (
         <div className="space-y-4">
             <h2 className="text-xl font-bold text-slate-800">{t("basic.title")}</h2>
@@ -177,60 +254,95 @@ function Step1({ data, update }: any) {
                 <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.firstName")}</label>
                     <input
+                        ref={firstNameRef}
+                        name="firstName"
+                        autoComplete="given-name"
                         type="text"
+                        required
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.firstName}
-                        onChange={(e) => update({ firstName: e.target.value })}
+                        onChange={(e) => handleFieldUpdate("firstName", e.target.value)}
+                        onInput={(e) => handleFieldUpdate("firstName", (e.target as HTMLInputElement).value)}
+                        onBlur={(e) => handleFieldUpdate("firstName", e.target.value)}
                         placeholder={t("basic.firstName.ph")}
                     />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.lastName")}</label>
                     <input
+                        ref={lastNameRef}
+                        name="lastName"
+                        autoComplete="family-name"
                         type="text"
+                        required
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.lastName}
-                        onChange={(e) => update({ lastName: e.target.value })}
+                        onChange={(e) => handleFieldUpdate("lastName", e.target.value)}
+                        onInput={(e) => handleFieldUpdate("lastName", (e.target as HTMLInputElement).value)}
+                        onBlur={(e) => handleFieldUpdate("lastName", e.target.value)}
                         placeholder={t("basic.lastName.ph")}
                     />
                 </div>
                 <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.email")}</label>
                     <input
+                        ref={emailRef}
+                        name="email"
+                        autoComplete="email"
                         type="email"
+                        required
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.email}
-                        onChange={(e) => update({ email: e.target.value })}
+                        onChange={(e) => handleFieldUpdate("email", e.target.value)}
+                        onInput={(e) => handleFieldUpdate("email", (e.target as HTMLInputElement).value)}
+                        onBlur={(e) => handleFieldUpdate("email", e.target.value)}
                         placeholder="john.doe@example.com"
                     />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.phone")}</label>
                     <input
+                        ref={phoneRef}
+                        name="phone"
+                        autoComplete="tel"
                         type="tel"
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.phone}
-                        onChange={(e) => update({ phone: e.target.value })}
+                        onChange={(e) => handleFieldUpdate("phone", e.target.value)}
+                        onInput={(e) => handleFieldUpdate("phone", (e.target as HTMLInputElement).value)}
+                        onBlur={(e) => handleFieldUpdate("phone", e.target.value)}
                         placeholder="+1 234 567 890"
                     />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.city")}</label>
                     <input
+                        ref={cityRef}
+                        name="city"
+                        autoComplete="address-level2"
                         type="text"
+                        required
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.city}
-                        onChange={(e) => update({ city: e.target.value })}
+                        onChange={(e) => handleFieldUpdate("city", e.target.value)}
+                        onInput={(e) => handleFieldUpdate("city", (e.target as HTMLInputElement).value)}
+                        onBlur={(e) => handleFieldUpdate("city", e.target.value)}
                         placeholder={t("basic.city.ph")}
                     />
                 </div>
                 <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-slate-700 mb-1">{t("basic.position")}</label>
                     <input
+                        ref={desiredPositionRef}
+                        name="desiredPosition"
+                        autoComplete="organization-title"
                         type="text"
+                        required
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-slate-900"
                         value={data.desiredPosition}
-                        onChange={(e) => update({ desiredPosition: e.target.value })}
+                        onChange={(e) => handleFieldUpdate("desiredPosition", e.target.value)}
+                        onInput={(e) => handleFieldUpdate("desiredPosition", (e.target as HTMLInputElement).value)}
+                        onBlur={(e) => handleFieldUpdate("desiredPosition", e.target.value)}
                         placeholder={t("basic.position.ph")}
                     />
                 </div>
