@@ -165,10 +165,20 @@ export async function POST(req: NextRequest) {
         const shareToken = randomBytes(32).toString("hex");
 
         // 3. Calculate Experience
-        const experienceIntervals = workExperience.map((exp: any) => ({
-            startDate: new Date(exp.startDate),
-            endDate: exp.isCurrent ? new Date() : new Date(exp.endDate),
-        }));
+        const experienceIntervals = workExperience
+            .filter((exp: any) => {
+                const start = new Date(exp.startDate);
+                if (isNaN(start.getTime())) return false;
+                if (!exp.isCurrent) {
+                    const end = new Date(exp.endDate);
+                    if (isNaN(end.getTime())) return false;
+                }
+                return true;
+            })
+            .map((exp: any) => ({
+                startDate: new Date(exp.startDate),
+                endDate: exp.isCurrent ? new Date() : new Date(exp.endDate),
+            }));
 
         const totalMonths = calculateTotalExperienceMonths(experienceIntervals);
         const totalYears = Math.floor(totalMonths / 12);
