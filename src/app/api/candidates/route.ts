@@ -207,9 +207,9 @@ export async function POST(req: NextRequest) {
         const totalMonths = Number.isFinite(rawMonths) ? Math.max(0, Math.trunc(rawMonths)) : 0;
         const totalYears = Math.floor(totalMonths / 12);
 
-        // 4. Save to Database (Transaction)
-        const result = await prisma.$transaction(async (tx: any) => {
-            const candidate = await tx.candidate.create({
+        // 4. Save candidate + nested models in a short transaction
+        const candidate = await prisma.$transaction(async (tx: any) => {
+            const created = await tx.candidate.create({
                 data: {
                     firstName,
                     lastName,
@@ -221,7 +221,7 @@ export async function POST(req: NextRequest) {
                     totalExperienceYears: totalYears,
                     hasDriversLicense,
                     driversLicenseTypes,
-                    highestEducationLevel: education.length > 0 ? education[0].level : "PRIMARY", // Simplified
+                    highestEducationLevel: education.length > 0 ? education[0].level : "PRIMARY",
                     gdprConsent,
                     shareToken,
 
@@ -258,62 +258,51 @@ export async function POST(req: NextRequest) {
                 },
             });
 
-            // Handle File Upload if exists
             if (cvFile) {
                 const fileInfo = await saveFile(cvFile);
                 await tx.attachment.create({
                     data: {
-                        candidateId: candidate.id,
+                        candidateId: created.id,
                         fileName: fileInfo.fileName,
                         filePath: fileInfo.filePath,
                         fileData: fileInfo.fileData,
                         storageType: fileInfo.storageType,
                         fileSize: fileInfo.fileSize,
                         mimeType: fileInfo.mimeType,
-                    }
-                });
-            }
-
-            // Handle Skills
-            for (const skillName of skills) {
-                const skill = await tx.skill.upsert({
-                    where: { name: skillName },
-                    update: {},
-                    create: { name: skillName },
-                });
-
-                await tx.candidateSkill.create({
-                    data: {
-                        candidateId: candidate.id,
-                        skillId: skill.id,
                     },
                 });
             }
 
-            // Handle Languages
-            for (const lang of languages) {
-                const language = await tx.language.upsert({
-                    where: { name: lang.name },
-                    update: {},
-                    create: { name: lang.name },
-                });
-
-                await tx.candidateLanguage.create({
-                    data: {
-                        candidateId: candidate.id,
-                        languageId: language.id,
-                        level: lang.level,
-                    },
-                });
-            }
-
-            return candidate;
+            return created;
         });
+
+        // 5. Link skills and languages outside the transaction to avoid timeout
+        for (const skillName of skills) {
+            const skill = await prisma.skill.upsert({
+                where: { name: skillName },
+                update: {},
+                create: { name: skillName },
+            });
+            await prisma.candidateSkill.create({
+                data: { candidateId: candidate.id, skillId: skill.id },
+            });
+        }
+
+        for (const lang of languages) {
+            const language = await prisma.language.upsert({
+                where: { name: lang.name },
+                update: {},
+                create: { name: lang.name },
+            });
+            await prisma.candidateLanguage.create({
+                data: { candidateId: candidate.id, languageId: language.id, level: lang.level },
+            });
+        }
 
         return NextResponse.json({
             success: true,
-            id: result.id,
-            shareToken: result.shareToken
+            id: candidate.id,
+            shareToken: candidate.shareToken,
         });
 
     } catch (error: any) {
