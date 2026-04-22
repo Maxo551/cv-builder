@@ -959,9 +959,14 @@ function Step7({ data, update }: any) {
                                 <label className="block text-sm font-medium text-slate-700">{t("cert.year")}</label>
                                 <input
                                     type="number"
+                                    min="1900"
+                                    max="2100"
                                     className="w-full px-3 py-1.5 border rounded-md text-slate-900"
-                                    value={cert.year}
-                                    onChange={(e) => updateCert(index, "year", parseInt(e.target.value))}
+                                    value={Number.isFinite(cert.year) ? cert.year : ""}
+                                    onChange={(e) => {
+                                        const parsed = parseInt(e.target.value, 10);
+                                        updateCert(index, "year", Number.isFinite(parsed) ? parsed : new Date().getFullYear());
+                                    }}
                                 />
                             </div>
                         </div>

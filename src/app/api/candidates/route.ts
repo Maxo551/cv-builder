@@ -29,6 +29,31 @@ function hasText(value: unknown) {
     return typeof value === "string" && value.trim().length > 0;
 }
 
+function toValidDate(value: unknown): Date | null {
+    if (!hasText(value)) return null;
+    const d = new Date(value as string);
+    return isNaN(d.getTime()) ? null : d;
+}
+
+const VALID_EDUCATION_LEVELS = new Set([
+    "PRIMARY",
+    "HIGH_SCHOOL",
+    "HIGH_SCHOOL_GRADUATION",
+    "BACHELOR",
+    "MASTER",
+    "PHD",
+]);
+
+const VALID_LANGUAGE_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
+
+function toSafeYear(value: unknown): number | null {
+    const n = typeof value === "number" ? value : parseInt(String(value ?? ""), 10);
+    if (!Number.isFinite(n)) return null;
+    const year = Math.trunc(n);
+    if (year < 1900 || year > 2100) return null;
+    return year;
+}
+
 export async function POST(req: NextRequest) {
     try {
         const ip = req.ip || "anonymous";
@@ -56,18 +81,23 @@ export async function POST(req: NextRequest) {
         );
 
         const education = parseJsonField<any[]>(formData, "education", [])
-            .map((edu) => ({
-                ...edu,
-                school: typeof edu?.school === "string" ? edu.school.trim() : "",
-                field: typeof edu?.field === "string" ? edu.field.trim() : "",
-                startDate: typeof edu?.startDate === "string" ? edu.startDate.trim() : "",
-                endDate: typeof edu?.endDate === "string" ? edu.endDate.trim() : "",
-            }))
+            .map((edu) => {
+                const level = typeof edu?.level === "string" ? edu.level.trim() : "";
+                return {
+                    ...edu,
+                    level: VALID_EDUCATION_LEVELS.has(level) ? level : "",
+                    school: typeof edu?.school === "string" ? edu.school.trim() : "",
+                    field: typeof edu?.field === "string" ? edu.field.trim() : "",
+                    startDate: typeof edu?.startDate === "string" ? edu.startDate.trim() : "",
+                    endDate: typeof edu?.endDate === "string" ? edu.endDate.trim() : "",
+                    isCurrent: edu?.isCurrent === true,
+                };
+            })
             .filter((edu) =>
-                hasText(edu.school) ||
-                hasText(edu.field) ||
-                hasText(edu.startDate) ||
-                hasText(edu.endDate)
+                hasText(edu.level) &&
+                hasText(edu.school) &&
+                hasText(edu.field) &&
+                toValidDate(edu.startDate) !== null
             );
 
         const workExperience = parseJsonField<any[]>(formData, "workExperience", [])
@@ -80,15 +110,13 @@ export async function POST(req: NextRequest) {
                 startDate: typeof exp?.startDate === "string" ? exp.startDate.trim() : "",
                 endDate: typeof exp?.endDate === "string" ? exp.endDate.trim() : "",
                 description: typeof exp?.description === "string" ? exp.description.trim() : "",
+                isCurrent: exp?.isCurrent === true,
             }))
             .filter((exp) =>
-                hasText(exp.position) ||
-                hasText(exp.company) ||
-                hasText(exp.industry) ||
-                hasText(exp.industryCustom) ||
-                hasText(exp.startDate) ||
-                hasText(exp.endDate) ||
-                hasText(exp.description)
+                hasText(exp.position) &&
+                hasText(exp.company) &&
+                toValidDate(exp.startDate) !== null &&
+                (exp.isCurrent || toValidDate(exp.endDate) !== null)
             );
 
         const skills = Array.from(
@@ -100,10 +128,14 @@ export async function POST(req: NextRequest) {
         );
 
         const languages = parseJsonField<any[]>(formData, "languages", [])
-            .map((lang) => ({
-                ...lang,
-                name: typeof lang?.name === "string" ? lang.name.trim() : "",
-            }))
+            .map((lang) => {
+                const level = typeof lang?.level === "string" ? lang.level.trim().toUpperCase() : "";
+                return {
+                    ...lang,
+                    name: typeof lang?.name === "string" ? lang.name.trim() : "",
+                    level: VALID_LANGUAGE_LEVELS.has(level) ? level : "B1",
+                };
+            })
             .filter((lang) => hasText(lang.name));
 
         const certificates = parseJsonField<any[]>(formData, "certificates", [])
@@ -111,8 +143,9 @@ export async function POST(req: NextRequest) {
                 ...cert,
                 name: typeof cert?.name === "string" ? cert.name.trim() : "",
                 organization: typeof cert?.organization === "string" ? cert.organization.trim() : "",
+                year: toSafeYear(cert?.year),
             }))
-            .filter((cert) => hasText(cert.name) || hasText(cert.organization));
+            .filter((cert) => hasText(cert.name) && hasText(cert.organization) && cert.year !== null);
 
         const cvFile = formData.get("cvFile") as File | null;
 
@@ -164,23 +197,14 @@ export async function POST(req: NextRequest) {
         // 2. Generate Share Token
         const shareToken = randomBytes(32).toString("hex");
 
-        // 3. Calculate Experience
-        const experienceIntervals = workExperience
-            .filter((exp: any) => {
-                const start = new Date(exp.startDate);
-                if (isNaN(start.getTime())) return false;
-                if (!exp.isCurrent) {
-                    const end = new Date(exp.endDate);
-                    if (isNaN(end.getTime())) return false;
-                }
-                return true;
-            })
-            .map((exp: any) => ({
-                startDate: new Date(exp.startDate),
-                endDate: exp.isCurrent ? new Date() : new Date(exp.endDate),
-            }));
+        // 3. Calculate Experience (workExperience is already sanitized above)
+        const experienceIntervals = workExperience.map((exp: any) => ({
+            startDate: toValidDate(exp.startDate) as Date,
+            endDate: exp.isCurrent ? new Date() : (toValidDate(exp.endDate) as Date),
+        }));
 
-        const totalMonths = calculateTotalExperienceMonths(experienceIntervals);
+        const rawMonths = calculateTotalExperienceMonths(experienceIntervals);
+        const totalMonths = Number.isFinite(rawMonths) ? Math.max(0, Math.trunc(rawMonths)) : 0;
         const totalYears = Math.floor(totalMonths / 12);
 
         // 4. Save to Database (Transaction)
@@ -206,10 +230,10 @@ export async function POST(req: NextRequest) {
                             position: exp.position,
                             company: exp.company,
                             industry: exp.industry === "Iné" ? (exp.industryCustom || "Iné") : (exp.industry || null),
-                            startDate: new Date(exp.startDate),
-                            endDate: exp.endDate ? new Date(exp.endDate) : null,
-                            isCurrent: exp.isCurrent,
-                            description: exp.description,
+                            startDate: toValidDate(exp.startDate) as Date,
+                            endDate: exp.isCurrent ? null : toValidDate(exp.endDate),
+                            isCurrent: exp.isCurrent === true,
+                            description: hasText(exp.description) ? exp.description : null,
                         })),
                     },
 
@@ -218,9 +242,9 @@ export async function POST(req: NextRequest) {
                             school: edu.school,
                             field: edu.field,
                             level: edu.level,
-                            startDate: new Date(edu.startDate),
-                            endDate: edu.endDate ? new Date(edu.endDate) : null,
-                            isCurrent: edu.isCurrent,
+                            startDate: toValidDate(edu.startDate) as Date,
+                            endDate: edu.isCurrent ? null : toValidDate(edu.endDate),
+                            isCurrent: edu.isCurrent === true,
                         })),
                     },
 
@@ -228,7 +252,7 @@ export async function POST(req: NextRequest) {
                         create: certificates.map((cert: any) => ({
                             name: cert.name,
                             organization: cert.organization,
-                            year: cert.year,
+                            year: cert.year as number,
                         })),
                     },
                 },
