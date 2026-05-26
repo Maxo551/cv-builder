@@ -20,7 +20,8 @@
       "mcp__db1d23be-3062-4a37-8069-aec682ea0478__list_projects",
       "mcp__db1d23be-3062-4a37-8069-aec682ea0478__list_deployments",
       "mcp__db1d23be-3062-4a37-8069-aec682ea0478__get_deployment_build_logs",
-      "mcp__cd56eaa0-788c-4716-b601-3d0e7d440627__create_draft"
+      "mcp__cd56eaa0-788c-4716-b601-3d0e7d440627__create_draft",
+      "mcp__cd56eaa0-788c-4716-b601-3d0e7d440627__list_drafts"
     ]
   }
 }
