@@ -3,7 +3,7 @@
 const CHAOS_BODY = `Dobrý deň,
 
 pred pár mesiacmi som vám písal ohľadom webovej stránky pre Chaos MMA. Vtedy som spomínal, že pripravím demo — a tu je:
-https://cv-builder-git-claude-ai-website-sales-px0tl-maxo551s-projects.vercel.app/demo/chaos-bratislava
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/chaos-bratislava
 
 Navrhol som ho špeciálne pre bojový gym — prehľad disciplín (MMA, kickbox, thajský box, wrestling), týždenný rozvrh, cenník členstva, info o gymu a kontaktná sekcia s CTA prvý tréning zadarmo.
 
@@ -28,7 +28,7 @@ const ONAKO_BODY = `Dobrý deň,
 volám sa Max — som webový vývojár z Bratislavy. Všimol som si, že onakotattoo.com ukazuje "coming soon" a zároveň máte na Instagrame 13 000 sledovateľov, ktorí nemajú kde si nájsť informácie, rezervovať termín ani pozrieť galériu.
 
 Postavil som pre vás demo — ako by mohol web vyzerať:
-https://cv-builder-git-claude-ai-website-sales-px0tl-maxo551s-projects.vercel.app/demo/onako-tattoo
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/onako-tattoo
 
 Čo dostanete za 400 €:
 • Živá webová stránka do 7 dní od potvrdenia
@@ -49,7 +49,7 @@ Maxim Šinkovič
 const SOVA_DM = `Ahoj, volám sa Max — som webový vývojár z Bratislavy.
 
 Všimol som si, že nemáš web a všetko riešiš cez Instagram. Postavil som pre teba demo — ako by mohol vyzerať tvoj web:
-https://cv-builder-git-claude-ai-website-sales-px0tl-maxo551s-projects.vercel.app/demo/sova-tattoo
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/sova-tattoo
 
 Galéria, štýly, rezervačný formulár — všetko na jednom mieste. Za 350 € hotové do týždňa.
 
