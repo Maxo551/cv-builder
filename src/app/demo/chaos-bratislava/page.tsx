@@ -10,7 +10,7 @@ export default function ChaosBratislavaDemo() {
             <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0d0d0d]/80 backdrop-blur-md">
                 <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 bg-red-600 rotate-45 flex items-center justify-center">
+                        <div className="w-7 h-7 bg-[#1456FF] rotate-45 flex items-center justify-center">
                             <span className="text-white font-black text-xs -rotate-45">C</span>
                         </div>
                         <span className="font-black text-base tracking-widest uppercase">CHAOS MMA</span>
@@ -21,7 +21,7 @@ export default function ChaosBratislavaDemo() {
                         <a href="#cenik" className="hover:text-white transition-colors">Cenník</a>
                         <a href="#kontakt" className="hover:text-white transition-colors">Kontakt</a>
                     </div>
-                    <a href="#kontakt" className="px-5 py-2.5 bg-red-600 text-white text-xs font-black tracking-widest uppercase hover:bg-red-500 transition-colors">
+                    <a href="#kontakt" className="px-5 py-2.5 bg-[#1456FF] text-white text-xs font-black tracking-widest uppercase hover:bg-[#2567FF] transition-colors">
                         1. TRÉNING ZADARMO
                     </a>
                 </div>
@@ -36,35 +36,35 @@ export default function ChaosBratislavaDemo() {
                         style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
                     />
                     <div
-                        className="absolute top-0 right-0 w-2/3 h-full opacity-30"
+                        className="absolute top-0 right-0 w-2/3 h-full opacity-25"
                         style={{
                             clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
-                            background: "radial-gradient(circle at 60% 40%, #DC2626 0%, transparent 60%)",
+                            background: "radial-gradient(circle at 60% 40%, #1456FF 0%, transparent 60%)",
                         }}
                     />
-                    {/* Vertical red slash */}
+                    {/* Vertical blue slash */}
                     <div
-                        className="absolute top-0 h-full w-1 bg-red-600"
+                        className="absolute top-0 h-full w-1 bg-[#1456FF]"
                         style={{ left: "calc(33.33% + 2px)", transform: "skewX(-5deg)" }}
                     />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-6 py-32 w-full">
                     <div className="max-w-2xl">
-                        <p className="text-xs tracking-[0.5em] text-red-500 font-bold uppercase mb-4">
+                        <p className="text-xs tracking-[0.5em] text-[#4D85FF] font-bold uppercase mb-4">
                             Bratislava • Bojové umenia
                         </p>
                         <h1 className="text-[clamp(3.5rem,10vw,7rem)] font-black leading-[0.9] tracking-tight mb-8 uppercase">
                             Boj<br />
                             začína<br />
-                            <span className="text-red-600">tu.</span>
+                            <span className="text-[#1456FF]">tu.</span>
                         </h1>
                         <p className="text-zinc-400 text-lg leading-relaxed mb-10 max-w-md">
                             MMA, kickbox, thajský box a wrestling. Tréningy pre každého —
                             od prvého kroku po súťažné medaily.
                         </p>
                         <div className="flex flex-wrap gap-4 items-center">
-                            <a href="#kontakt" className="px-8 py-4 bg-red-600 text-white font-black text-sm tracking-widest uppercase hover:bg-red-500 transition-colors">
+                            <a href="#kontakt" className="px-8 py-4 bg-[#1456FF] text-white font-black text-sm tracking-widest uppercase hover:bg-[#2567FF] transition-colors">
                                 Vyskúšať zadarmo
                             </a>
                             <a href="#rozvrh" className="text-sm font-bold tracking-widest uppercase text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
@@ -85,7 +85,7 @@ export default function ChaosBratislavaDemo() {
                                 { n: "1.", label: "Tréning zadarmo" },
                             ].map((s) => (
                                 <div key={s.label} className="py-5 px-8 flex items-baseline gap-3">
-                                    <span className="text-2xl font-black text-red-500">{s.n}</span>
+                                    <span className="text-2xl font-black text-[#4D85FF]">{s.n}</span>
                                     <span className="text-xs tracking-widest text-zinc-500 uppercase">{s.label}</span>
                                 </div>
                             ))}
@@ -99,7 +99,7 @@ export default function ChaosBratislavaDemo() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-end justify-between mb-16">
                         <div>
-                            <p className="text-xs tracking-[0.4em] text-red-500 font-bold uppercase mb-3">Čo trénujeme</p>
+                            <p className="text-xs tracking-[0.4em] text-[#4D85FF] font-bold uppercase mb-3">Čo trénujeme</p>
                             <h2 className="text-5xl font-black uppercase">Disciplíny</h2>
                         </div>
                         <p className="text-zinc-600 text-sm max-w-xs text-right hidden md:block">
@@ -112,28 +112,28 @@ export default function ChaosBratislavaDemo() {
                                 name: "MMA",
                                 tag: "Najobľúbenejšie",
                                 desc: "Mixed Martial Arts — kompletný bojový systém v stoji aj na zemi. Ideálne pre tých, čo chcú vedieť všetko.",
-                                accent: "bg-red-600",
+                                accent: "bg-[#1456FF]",
                                 times: ["Po 17:00", "St 19:00", "Pi 17:00"],
                             },
                             {
                                 name: "Kickbox",
                                 tag: "Pre kondíciu",
                                 desc: "Techniky úderov rukami a nohami. Výborná kombinácia cardio tréningu a sebaobranných zručností.",
-                                accent: "bg-orange-500",
+                                accent: "bg-[#3B70FF]",
                                 times: ["Po 07:00", "St 07:00", "Št 19:00"],
                             },
                             {
                                 name: "Thajský box",
                                 tag: "Muay Thai",
                                 desc: "8 zbraní tela — ruky, nohy, lakte, kolená. Jeden z najkomplexnejších a najúčinnejších bojových štýlov.",
-                                accent: "bg-yellow-500",
+                                accent: "bg-[#5585FF]",
                                 times: ["Ut 17:00", "Št 17:00"],
                             },
                             {
                                 name: "Wrestling",
                                 tag: "Základ MMA",
                                 desc: "Technika hodov, striahania a kontroly. Základ každého úspešného MMA bojovníka.",
-                                accent: "bg-purple-500",
+                                accent: "bg-[#6B97FF]",
                                 times: ["Po 19:00", "Ut 19:00"],
                             },
                         ].map((d) => (
@@ -141,7 +141,7 @@ export default function ChaosBratislavaDemo() {
                                 <div className="flex items-start justify-between mb-6">
                                     <div>
                                         <h3 className="text-3xl font-black uppercase mb-1">{d.name}</h3>
-                                        <span className={`inline-block px-2 py-0.5 text-xs font-bold ${d.accent} text-black uppercase tracking-wider`}>
+                                        <span className={`inline-block px-2 py-0.5 text-xs font-bold ${d.accent} text-white uppercase tracking-wider`}>
                                             {d.tag}
                                         </span>
                                     </div>
@@ -163,7 +163,7 @@ export default function ChaosBratislavaDemo() {
             {/* Schedule */}
             <section id="rozvrh" className="py-28 bg-zinc-900">
                 <div className="max-w-7xl mx-auto px-6">
-                    <p className="text-xs tracking-[0.4em] text-red-500 font-bold uppercase mb-3">Týždenný plán</p>
+                    <p className="text-xs tracking-[0.4em] text-[#4D85FF] font-bold uppercase mb-3">Týždenný plán</p>
                     <h2 className="text-5xl font-black uppercase mb-16">Rozvrh</h2>
                     <div className="overflow-x-auto -mx-6 px-6">
                         <table className="w-full min-w-[640px]">
@@ -182,30 +182,30 @@ export default function ChaosBratislavaDemo() {
                                     {
                                         time: "07:00",
                                         cells: [
-                                            { name: "Kickbox", color: "text-orange-400 bg-orange-400/10" },
+                                            { name: "Kickbox", color: "text-[#4D85FF] bg-[#1456FF]/10" },
                                             null,
-                                            { name: "Kickbox", color: "text-orange-400 bg-orange-400/10" },
+                                            { name: "Kickbox", color: "text-[#4D85FF] bg-[#1456FF]/10" },
                                             null,
-                                            { name: "MMA", color: "text-red-400 bg-red-400/10" },
+                                            { name: "MMA", color: "text-[#6B97FF] bg-[#1456FF]/15" },
                                         ],
                                     },
                                     {
                                         time: "17:00",
                                         cells: [
-                                            { name: "MMA", color: "text-red-400 bg-red-400/10" },
-                                            { name: "Thajský box", color: "text-yellow-400 bg-yellow-400/10" },
-                                            { name: "Wrestling", color: "text-purple-400 bg-purple-400/10" },
-                                            { name: "MMA", color: "text-red-400 bg-red-400/10" },
-                                            { name: "Kickbox", color: "text-orange-400 bg-orange-400/10" },
+                                            { name: "MMA", color: "text-[#4D85FF] bg-[#1456FF]/10" },
+                                            { name: "Thajský box", color: "text-[#6B97FF] bg-[#1456FF]/15" },
+                                            { name: "Wrestling", color: "text-[#89AAFF] bg-[#1456FF]/20" },
+                                            { name: "MMA", color: "text-[#4D85FF] bg-[#1456FF]/10" },
+                                            { name: "Kickbox", color: "text-[#4D85FF] bg-[#1456FF]/10" },
                                         ],
                                     },
                                     {
                                         time: "19:00",
                                         cells: [
-                                            { name: "Wrestling", color: "text-purple-400 bg-purple-400/10" },
-                                            { name: "MMA", color: "text-red-400 bg-red-400/10" },
-                                            { name: "Kickbox", color: "text-orange-400 bg-orange-400/10" },
-                                            { name: "Thajský box", color: "text-yellow-400 bg-yellow-400/10" },
+                                            { name: "Wrestling", color: "text-[#89AAFF] bg-[#1456FF]/20" },
+                                            { name: "MMA", color: "text-[#4D85FF] bg-[#1456FF]/10" },
+                                            { name: "Kickbox", color: "text-[#4D85FF] bg-[#1456FF]/10" },
+                                            { name: "Thajský box", color: "text-[#6B97FF] bg-[#1456FF]/15" },
                                             null,
                                         ],
                                     },
@@ -234,7 +234,7 @@ export default function ChaosBratislavaDemo() {
             {/* Pricing */}
             <section id="cenik" className="py-28">
                 <div className="max-w-7xl mx-auto px-6">
-                    <p className="text-xs tracking-[0.4em] text-red-500 font-bold uppercase mb-3">Členstvo</p>
+                    <p className="text-xs tracking-[0.4em] text-[#4D85FF] font-bold uppercase mb-3">Členstvo</p>
                     <h2 className="text-5xl font-black uppercase mb-16">Cenník</h2>
                     <div className="grid md:grid-cols-3 gap-px bg-zinc-800">
                         {[
@@ -265,16 +265,16 @@ export default function ChaosBratislavaDemo() {
                         ].map((p) => (
                             <div
                                 key={p.name}
-                                className={`p-8 ${p.highlight ? "bg-red-600" : "bg-zinc-900"}`}
+                                className={`p-8 ${p.highlight ? "bg-[#1456FF]" : "bg-zinc-900"}`}
                             >
                                 <p className="text-xs tracking-widest uppercase font-bold mb-4 opacity-70">{p.name}</p>
                                 <div className="mb-6">
                                     <span className="text-5xl font-black">{p.price}</span>
-                                    <span className={`text-sm ml-2 ${p.highlight ? "text-red-200" : "text-zinc-500"}`}>{p.sub}</span>
+                                    <span className={`text-sm ml-2 ${p.highlight ? "text-blue-200" : "text-zinc-500"}`}>{p.sub}</span>
                                 </div>
                                 <ul className="space-y-2 mb-8">
                                     {p.items.map((item) => (
-                                        <li key={item} className={`text-sm flex items-center gap-2 ${p.highlight ? "text-red-100" : "text-zinc-400"}`}>
+                                        <li key={item} className={`text-sm flex items-center gap-2 ${p.highlight ? "text-blue-100" : "text-zinc-400"}`}>
                                             <span className="w-1 h-1 bg-current rounded-full shrink-0" />
                                             {item}
                                         </li>
@@ -284,8 +284,8 @@ export default function ChaosBratislavaDemo() {
                                     href="#kontakt"
                                     className={`block text-center py-3 px-6 text-xs font-black tracking-widest uppercase transition-colors ${
                                         p.highlight
-                                            ? "bg-white text-red-600 hover:bg-zinc-100"
-                                            : "border border-zinc-700 text-white hover:border-white"
+                                            ? "bg-white text-[#1456FF] hover:bg-zinc-100"
+                                            : "border border-zinc-700 text-white hover:border-[#1456FF] hover:text-[#4D85FF]"
                                     }`}
                                 >
                                     {p.cta}
@@ -301,14 +301,14 @@ export default function ChaosBratislavaDemo() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-16 items-start">
                         <div>
-                            <p className="text-xs tracking-[0.4em] text-red-500 font-bold uppercase mb-3">Príď trénovať</p>
+                            <p className="text-xs tracking-[0.4em] text-[#4D85FF] font-bold uppercase mb-3">Príď trénovať</p>
                             <h2 className="text-5xl font-black uppercase mb-10">Kontakt</h2>
                             <div className="space-y-6">
                                 {[
-                                    { label: "Adresa", value: "Bratislava — zverejníme čoskoro" },
+                                    { label: "Adresa", value: "Ivánska cesta 26, Bratislava - Ružinov" },
                                     { label: "Otváracie hodiny", value: "Po – Pi: 06:30 – 21:00 / So: 09:00 – 14:00" },
                                     { label: "Email", value: "chaosbratislavamma@gmail.com" },
-                                    { label: "Instagram", value: "@chaosbratislava" },
+                                    { label: "Instagram", value: "@chaos_bratislava" },
                                 ].map((item) => (
                                     <div key={item.label} className="border-b border-zinc-800 pb-5">
                                         <p className="text-xs tracking-widest text-zinc-600 uppercase font-bold mb-1">{item.label}</p>
@@ -325,15 +325,15 @@ export default function ChaosBratislavaDemo() {
                             </p>
                             <a
                                 href="mailto:chaosbratislavamma@gmail.com?subject=Prvý tréning zadarmo"
-                                className="block w-full text-center py-4 bg-red-600 text-white text-xs font-black tracking-widest uppercase hover:bg-red-500 transition-colors mb-3"
+                                className="block w-full text-center py-4 bg-[#1456FF] text-white text-xs font-black tracking-widest uppercase hover:bg-[#2567FF] transition-colors mb-3"
                             >
                                 Napísať e-mail
                             </a>
                             <a
-                                href="https://instagram.com/chaosbratislava"
+                                href="https://instagram.com/chaos_bratislava"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block w-full text-center py-4 border border-zinc-700 text-zinc-400 text-xs font-bold tracking-widest uppercase hover:border-zinc-500 hover:text-white transition-colors"
+                                className="block w-full text-center py-4 border border-zinc-700 text-zinc-400 text-xs font-bold tracking-widest uppercase hover:border-[#1456FF] hover:text-[#4D85FF] transition-colors"
                             >
                                 Instagram
                             </a>
@@ -346,7 +346,7 @@ export default function ChaosBratislavaDemo() {
             <footer className="py-8 border-t border-zinc-800">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 bg-red-600 rotate-45" />
+                        <div className="w-5 h-5 bg-[#1456FF] rotate-45" />
                         <span className="font-black text-sm tracking-widest uppercase">Chaos MMA Bratislava</span>
                     </div>
                     <p className="text-zinc-700 text-xs">© 2026 Chaos MMA Bratislava</p>
