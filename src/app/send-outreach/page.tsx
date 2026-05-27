@@ -1,39 +1,16 @@
 "use client";
 
-const SPREJE_BODY = `Ahoj Honzo,
-
-slíbil jsem demo — tady je:
-https://cv-builder-git-claude-ai-website-sales-px0tl-maxo551s-projects.vercel.app/demo/spreje-praha
-
-Udělal jsem ho přímo pro SprejePraha — tmavý urban styl, přehled produktů a značek (Montana, Molotow, MTN…), otevírací doby, adresa, kontakt a odkaz na Instagram. Je to návrh, takže cokoliv lze upravit podle vašich představ.
-
-Co dostanete za 350 €:
-• Hotová, živá webová stránka do 7 dní od potvrzení
-• Mobilní verze (přes 60 % návštěvníků přichází z telefonu)
-• Základní SEO — správné titulky, meta popis, rychlé načítání
-• Všechny sekce z dema + úpravy dle vašich požadavků
-• Nastavení hostingu (Vercel, první rok zdarma)
-• 1 měsíc bezplatných oprav po spuštění
-
-350 € je pevná cena, žádné skryté náklady. Pokud by to pomohlo, klidně lze rozdělit: 175 € při zahájení, 175 € při předání.
-
-Pokud se vám demo líbí a chcete pokračovat, stačí odpovědět — domluvíme se na detailech a začínám hned.
-
-S pozdravem,
-Max
-+421 904 340 353`;
-
 const CHAOS_BODY = `Dobrý deň,
 
 pred pár mesiacmi som vám písal ohľadom webovej stránky pre Chaos MMA. Vtedy som spomínal, že pripravím demo — a tu je:
 https://cv-builder-git-claude-ai-website-sales-px0tl-maxo551s-projects.vercel.app/demo/chaos-bratislava
 
-Navrhol som ho špeciálne pre bojový gym — prehľad disciplín (MMA, kickbox, thajský box, wrestling), týždenný rozvrh, info o gymu, prvý tréning zadarmo ako CTA a kontaktná sekcia.
+Navrhol som ho špeciálne pre bojový gym — prehľad disciplín (MMA, kickbox, thajský box, wrestling), týždenný rozvrh, cenník členstva, info o gymu a kontaktná sekcia s CTA prvý tréning zadarmo.
 
 Čo dostanete za 400 €:
 • Živá webová stránka do 7 dní od potvrdenia
 • Plne mobilná verzia
-• Rozvrh, disciplíny, kontakt — všetko čo je v deme + vaše úpravy
+• Rozvrh, disciplíny, cenník, kontakt — všetko čo je v deme + vaše úpravy
 • Základné SEO (aby vás ľudia našli pri hľadaní MMA Bratislava)
 • Hosting prvý rok zadarmo
 • 1 mesiac bezplatných úprav po spustení
@@ -69,45 +46,18 @@ S pozdravom,
 Maxim Šinkovič
 +421 904 340 353`;
 
+const SOVA_DM = `Ahoj, volám sa Max — som webový vývojár z Bratislavy.
+
+Všimol som si, že nemáš web a všetko riešiš cez Instagram. Postavil som pre teba demo — ako by mohol vyzerať tvoj web:
+https://cv-builder-git-claude-ai-website-sales-px0tl-maxo551s-projects.vercel.app/demo/sova-tattoo
+
+Galéria, štýly, rezervačný formulár — všetko na jednom mieste. Za 350 € hotové do týždňa.
+
+Ak ťa to zaujalo, daj vedieť 🤙`;
+
 function encode(s: string) {
     return encodeURIComponent(s);
 }
-
-const emails = [
-    {
-        id: "spreje",
-        label: "1. Spreje Praha",
-        sublabel: "Teplý lead — pýtal sa na cenu a portfólio",
-        to: "sprejepraha@gmail.com",
-        subject: "Re: Návrh webovej stránky",
-        body: SPREJE_BODY,
-        price: "350 €",
-        color: "bg-yellow-400 hover:bg-yellow-300 text-black",
-        border: "border-yellow-400/30",
-    },
-    {
-        id: "chaos",
-        label: "2. Chaos MMA",
-        sublabel: "Follow-up po 4 mesiacoch — s reálnym demom",
-        to: "chaosbratislavamma@gmail.com",
-        subject: "Demo webu pre Chaos MMA — pripravené",
-        body: CHAOS_BODY,
-        price: "400 €",
-        color: "bg-red-600 hover:bg-red-500 text-white",
-        border: "border-red-500/30",
-    },
-    {
-        id: "onako",
-        label: "3. Onakô Tattoo",
-        sublabel: "13K Instagram, doména 'coming soon' — ideálny lead",
-        to: "info@onakotattoo.com",
-        subject: "Hotový web pre Onakô Tattoo — demo pripravené",
-        body: ONAKO_BODY,
-        price: "400 €",
-        color: "bg-white hover:bg-zinc-100 text-black",
-        border: "border-zinc-500/30",
-    },
-];
 
 export default function SendOutreach() {
     return (
@@ -115,42 +65,79 @@ export default function SendOutreach() {
             <div className="max-w-lg w-full">
                 <div className="text-center mb-10">
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
-                    <h1 className="text-3xl font-black mb-2">Odošli 3 emaily</h1>
-                    <p className="text-zinc-400">
-                        Každé tlačidlo otvorí Gmail s predvyplneným emailom.
-                        Skontroluj a odošli — <strong className="text-white">3 minúty, 1 150 € potenciál.</strong>
+                    <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
+                    <p className="text-zinc-400 text-sm">
+                        2 emaily + 1 Instagram DM — <strong className="text-white">potenciál 1 150 €</strong>
                     </p>
                 </div>
 
-                <div className="space-y-4 mb-10">
-                    {emails.map((e) => (
-                        <div
-                            key={e.id}
-                            className={`border ${e.border} rounded-2xl p-5 bg-zinc-900`}
-                        >
-                            <div className="flex items-start justify-between mb-3">
-                                <div>
-                                    <h2 className="font-black text-lg">{e.label}</h2>
-                                    <p className="text-zinc-500 text-sm">{e.sublabel}</p>
-                                </div>
-                                <span className="text-xl font-black">{e.price}</span>
+                <div className="space-y-4 mb-8">
+                    {/* Chaos MMA — email */}
+                    <div className="border border-red-500/30 rounded-2xl p-5 bg-zinc-900">
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">1. Chaos MMA</h2>
+                                <p className="text-zinc-500 text-sm">Follow-up po 4 mesiacoch — demo pripravené</p>
                             </div>
-                            <p className="text-zinc-600 text-xs mb-4">→ {e.to}</p>
-                            <a
-                                href={`mailto:${e.to}?subject=${encode(e.subject)}&body=${encode(e.body)}`}
-                                className={`block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition ${e.color}`}
-                            >
-                                Otvoriť v Gmail a odoslať →
-                            </a>
+                            <span className="text-xl font-black">400 €</span>
                         </div>
-                    ))}
+                        <p className="text-zinc-600 text-xs mb-4">→ chaosbratislavamma@gmail.com</p>
+                        <a
+                            href={`mailto:chaosbratislavamma@gmail.com?subject=${encode("Demo webu pre Chaos MMA — pripravené")}&body=${encode(CHAOS_BODY)}`}
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-red-600 hover:bg-red-500 text-white"
+                        >
+                            Otvoriť v Gmail a odoslať →
+                        </a>
+                    </div>
+
+                    {/* Onakô Tattoo — email */}
+                    <div className="border border-zinc-500/30 rounded-2xl p-5 bg-zinc-900">
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">2. Onakô Tattoo</h2>
+                                <p className="text-zinc-500 text-sm">13K Instagram, doména &apos;coming soon&apos;</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <p className="text-zinc-600 text-xs mb-4">→ info@onakotattoo.com</p>
+                        <a
+                            href={`mailto:info@onakotattoo.com?subject=${encode("Hotový web pre Onakô Tattoo — demo pripravené")}&body=${encode(ONAKO_BODY)}`}
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black"
+                        >
+                            Otvoriť v Gmail a odoslať →
+                        </a>
+                    </div>
+
+                    {/* Sova Tattoo — Instagram DM */}
+                    <div className="border border-purple-500/30 rounded-2xl p-5 bg-zinc-900">
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">3. Sova Tattoo</h2>
+                                <p className="text-zinc-500 text-sm">3.3K Instagram, žiadny web — Instagram DM</p>
+                            </div>
+                            <span className="text-xl font-black">350 €</span>
+                        </div>
+                        <p className="text-zinc-600 text-xs mb-3">→ @sova__ink na Instagrame</p>
+                        <a
+                            href="https://instagram.com/sova__ink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 text-white mb-3"
+                        >
+                            Otvoriť Instagram @sova__ink →
+                        </a>
+                        <div className="bg-zinc-800 rounded-xl p-3">
+                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM:</p>
+                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{SOVA_DM}</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
                         <span className="text-white font-black text-lg">1 150 €</span>
-                        <span className="text-zinc-600 ml-2">= 350 + 400 + 400</span>
+                        <span className="text-zinc-600 ml-2">= 400 + 400 + 350</span>
                     </p>
                 </div>
             </div>
