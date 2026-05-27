@@ -55,6 +55,15 @@ Galéria, štýly, rezervačný formulár — všetko na jednom mieste. Za 350 �
 
 Ak ťa to zaujalo, daj vedieť 🤙`;
 
+const ALEX_DM = `Ahoj Alex, volám sa Max — som webový vývojár z Bratislavy.
+
+Sledujem tvoju prácu na Instagrame a myslím, že by si si zaslúžil vlastný web — nie len profil. Postavil som pre teba demo v trashpolka štýle, čierno-červené, agresívne:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/alex-tattoo
+
+Portfolio, štýly, guest spot plán, booking — všetko na jednom mieste. Za 400 € hotové do týždňa.
+
+Daj vedieť čo na to myslíš 🤙`;
+
 function encode(s: string) {
     return encodeURIComponent(s);
 }
@@ -67,7 +76,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        2 emaily + 1 Instagram DM — <strong className="text-white">potenciál 1 150 €</strong>
+                        2 emaily + 2 Instagram DM — <strong className="text-white">potenciál 1 550 €</strong>
                     </p>
                 </div>
 
@@ -131,13 +140,38 @@ export default function SendOutreach() {
                             <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{SOVA_DM}</p>
                         </div>
                     </div>
+
+                    {/* Alex Bykovskiy — Instagram DM */}
+                    <div className="border border-red-900/40 rounded-2xl p-5 bg-zinc-900">
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">4. Alex Bykovskiy</h2>
+                                <p className="text-zinc-500 text-sm">25K Instagram, trashpolka artist, žiadny web</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <p className="text-zinc-600 text-xs mb-3">→ @alexbykovskiy na Instagrame</p>
+                        <a
+                            href="https://instagram.com/alexbykovskiy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3"
+                            style={{ background: "#E31A1A" }}
+                        >
+                            Otvoriť Instagram @alexbykovskiy →
+                        </a>
+                        <div className="bg-zinc-800 rounded-xl p-3">
+                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM:</p>
+                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{ALEX_DM}</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">1 150 €</span>
-                        <span className="text-zinc-600 ml-2">= 400 + 400 + 350</span>
+                        <span className="text-white font-black text-lg">1 550 €</span>
+                        <span className="text-zinc-600 ml-2">= 400 + 400 + 350 + 400</span>
                     </p>
                 </div>
             </div>
