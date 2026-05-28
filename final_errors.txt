@@ -1,1 +1,0 @@
-﻿src/app/api/admin/attachments/[id]/route.ts(34,44): error TS2339: Property 'mimeType' does not exist on type '{ id: string; candidateId: string; fileName: string; fileType: string; filePath: string; fileSize: number; createdAt: Date; }'.
