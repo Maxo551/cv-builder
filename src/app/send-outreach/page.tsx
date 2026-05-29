@@ -83,6 +83,29 @@ Ak ťa to chytí, ozvi sa a doladíme to.
 Max
 +421 904 340 353`;
 
+const DJSNOWMAN_BODY = `Ahoj Radoslav,
+
+volám sa Max, robím weby v Bratislave. Natrafil som na tvoj Instagram — 500+ svadieb a pritom žiadny web. To ma prekvapilo, lebo ľudia, čo ťa hľadajú pred svadbou, nemajú kde nájsť info, počuť mixe ani ti napísať dopyt.
+
+Postavil som ti rovno demo:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/dj-snowman
+
+Volám sa Max. Spravím ti to do týždňa za 400 €, s hostingom na prvý rok a mesiacom úprav.
+
+Ak ťa to zaujalo, ozvi sa.
+
+Max
++421 904 340 353`;
+
+const MARTINA_DM = `Ahoj Martina, volám sa Max — som webový vývojár z Bratislavy.
+
+Vidím že máš 3K followerov a učíš jogu aj pilates, ale žiadny web nemáš. Postavil som ti demo — elegantné, čisté, so sageovou farbou:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/martina-yoga
+
+Hodiny, o tebe, kontakt — všetko na jednom mieste. Za 400 € hotové do týždňa.
+
+Daj vedieť 🌿`;
+
 function encode(s: string) {
     return encodeURIComponent(s);
 }
@@ -95,7 +118,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        3 odoslané · 3 nové na odoslanie — <strong className="text-white">potenciál 2 400 €</strong>
+                        5 odoslaných · 3 čakajú — <strong className="text-white">potenciál 3 200 €</strong>
                     </p>
                 </div>
 
@@ -212,15 +235,61 @@ export default function SendOutreach() {
                         </a>
                     </div>
 
+                    {/* DJ Snowman — email */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(201,168,76,0.3)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">7. DJ Snowman</h2>
+                                <p className="text-zinc-500 text-sm">~2K Instagram · 500+ svadieb · email v bio · žiadny web</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <p className="text-zinc-600 text-xs mb-4">→ petrusradoslav@gmail.com</p>
+                        <a href={`mailto:petrusradoslav@gmail.com?subject=${encode("Postavil som ti web — DJ Snowman demo")}&body=${encode(DJSNOWMAN_BODY)}`}
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-black mb-3 hover:opacity-90"
+                            style={{ background: "#C9A84C" }}>
+                            Otvoriť v Gmail →
+                        </a>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/dj-snowman" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
+                    {/* Martina Fong — Instagram DM */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(122,158,126,0.3)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">8. Martina Fong</h2>
+                                <p className="text-zinc-500 text-sm">3K Instagram · yoga & pilates · žiadny web</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <p className="text-zinc-600 text-xs mb-3">→ @martina_fong na Instagrame</p>
+                        <a href="https://instagram.com/martina_fong" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#7a9e7e" }}>
+                            Otvoriť Instagram →
+                        </a>
+                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
+                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM:</p>
+                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{MARTINA_DM}</p>
+                        </div>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/martina-yoga" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
                 </div>
 
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">2 400 €</span>
-                        <span className="text-zinc-600 ml-2">= 6 × 400 €</span>
+                        <span className="text-white font-black text-lg">3 200 €</span>
+                        <span className="text-zinc-600 ml-2">= 8 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">3 odoslaných · 3 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">5 odoslaných · 3 čakajú na odoslanie</p>
                 </div>
             </div>
         </div>
