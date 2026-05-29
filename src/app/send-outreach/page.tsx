@@ -97,6 +97,24 @@ Ak ťa to zaujalo, ozvi sa.
 Max
 +421 904 340 353`;
 
+const LASHART_DM = `Ahoj, volám sa Max — robím weby v Bratislave.
+
+Videl som váš Instagram @lashart_studio — 2 300 followerov a krásne práce, no vaša webstránka je len prázdna Webnode šablóna. Postavil som vám demo, ako by mohol skutočný web vyzerať:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lashart-studio
+
+Cenník, služby, rezervácia — všetko na jednom mieste. Za 400 € hotové do týždňa.
+
+Napíšte ak vás to zaujalo 💜`;
+
+const CAKESET_DM = `Ahoj, volám sa Max — robím weby v Bratislave.
+
+Videl som váš Instagram @lovely_cakeset — nádherné torty a pritom žiadny vlastný web. Postavil som vám demo, ako by mohol vyzerať:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lovely-cakeset
+
+Galéria, ponuka, objednávka — všetko na jednom mieste. Za 400 € hotové do týždňa.
+
+Napíšte ak vás to zaujalo 🎂`;
+
 const MARTINA_DM = `Hey Martina, I'm Max — a web developer based in Bratislava.
 
 I saw your profile — 3K followers, yoga and pilates, but no website. I built a demo to show you what it could look like:
@@ -118,7 +136,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        5 odoslaných · 3 čakajú — <strong className="text-white">potenciál 3 200 €</strong>
+                        5 odoslaných · 5 čakajú — <strong className="text-white">potenciál 4 000 €</strong>
                     </p>
                 </div>
 
@@ -263,6 +281,58 @@ export default function SendOutreach() {
                         </a>
                     </div>
 
+                    {/* LASHart Studio — Instagram DM / WhatsApp */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(155,111,160,0.3)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">9. LASHart Studio</h2>
+                                <p className="text-zinc-500 text-sm">2.3K Instagram · mihalnice & obočie · len prázdna Webnode stránka</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <a href="https://instagram.com/lashart_studio" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/lashart_studio</a>
+                        <p className="text-zinc-600 text-xs mb-3">→ @lashart_studio · WhatsApp +421 917 066 888</p>
+                        <a href="https://wa.me/421917066888" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#9b6fa0" }}>
+                            Otvoriť WhatsApp →
+                        </a>
+                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
+                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli:</p>
+                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{LASHART_DM}</p>
+                        </div>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lashart-studio" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
+                    {/* Lovely Cakeset — Instagram / WhatsApp DM */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(201,125,78,0.3)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">10. Lovely Cakeset</h2>
+                                <p className="text-zinc-500 text-sm">~800 Instagram · torty na objednávku · len WhatsApp</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <a href="https://instagram.com/lovely_cakeset" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/lovely_cakeset</a>
+                        <p className="text-zinc-600 text-xs mb-3">→ @lovely_cakeset · WhatsApp +380 66 194 9387</p>
+                        <a href="https://wa.me/380661949387" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#c97d4e" }}>
+                            Otvoriť WhatsApp →
+                        </a>
+                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
+                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli:</p>
+                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{CAKESET_DM}</p>
+                        </div>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lovely-cakeset" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
                     {/* Martina Fong — Instagram DM */}
                     <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(122,158,126,0.3)" }}>
                         <div className="flex items-start justify-between mb-3">
@@ -294,10 +364,10 @@ export default function SendOutreach() {
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">3 200 €</span>
-                        <span className="text-zinc-600 ml-2">= 8 × 400 €</span>
+                        <span className="text-white font-black text-lg">4 000 €</span>
+                        <span className="text-zinc-600 ml-2">= 10 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">5 odoslaných · 3 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">5 odoslaných · 5 čakajú na odoslanie</p>
                 </div>
             </div>
         </div>
