@@ -136,7 +136,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        5 odoslaných · 5 čakajú — <strong className="text-white">potenciál 4 000 €</strong>
+                        10 odoslaných — <strong className="text-white">potenciál 4 000 €</strong>
                     </p>
                 </div>
 
@@ -209,10 +209,10 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/kd_makeupartist" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/kd_makeupartist</a>
-                        <p className="text-zinc-600 text-xs mb-4">→ kd.krizanovicova@gmail.com · Draft v Gmail čaká na odoslanie</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ Email odoslaný</p>
                         <a href={`mailto:kd.krizanovicova@gmail.com?subject=${encodeURIComponent("Hotový web pre makeup artistku — demo pripravené")}`}
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black">
-                            Otvoriť Gmail draft →
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Otvoriť znova →
                         </a>
                     </div>
 
@@ -226,10 +226,11 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/mari.iayurchenko" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/mari.iayurchenko</a>
-                        <p className="text-zinc-600 text-xs mb-4">→ mariiayurchenko1499@gmail.com</p>
+                        <p className="text-zinc-600 text-xs mb-1">→ mariiayurchenko1499@gmail.com</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ Email odoslaný</p>
                         <a href={`mailto:mariiayurchenko1499@gmail.com?subject=${encode("Demo webu pre fotografku — Mariia Yurchenko")}&body=${encode(MARIIA_BODY)}`}
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black mb-3">
-                            Otvoriť v Gmail →
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400 mb-3">
+                            Otvoriť znova →
                         </a>
                         <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/mariia-photo" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
@@ -247,11 +248,11 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/vladimir_holota" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/vladimir_holota</a>
-                        <p className="text-zinc-600 text-xs mb-4">→ vladimir.holota@gmail.com</p>
+                        <p className="text-zinc-600 text-xs mb-1">→ vladimir.holota@gmail.com</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ Email odoslaný</p>
                         <a href={`mailto:vladimir.holota@gmail.com?subject=${encode("Demo webu pre Vladimíra Holotu — personal trainer")}&body=${encode(VLADIMIR_BODY)}`}
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
-                            style={{ background: "#FF6B00" }}>
-                            Otvoriť v Gmail →
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400 mb-3">
+                            Otvoriť znova →
                         </a>
                         <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/vladimir-holota" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
@@ -269,11 +270,11 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/djsnowman_official" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/djsnowman_official</a>
-                        <p className="text-zinc-600 text-xs mb-4">→ petrusradoslav@gmail.com</p>
+                        <p className="text-zinc-600 text-xs mb-1">→ petrusradoslav@gmail.com</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ Email odoslaný</p>
                         <a href={`mailto:petrusradoslav@gmail.com?subject=${encode("Postavil som ti web — DJ Snowman demo")}&body=${encode(DJSNOWMAN_BODY)}`}
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-black mb-3 hover:opacity-90"
-                            style={{ background: "#C9A84C" }}>
-                            Otvoriť v Gmail →
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400 mb-3">
+                            Otvoriť znova →
                         </a>
                         <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/dj-snowman" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
@@ -291,16 +292,12 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/lashart_studio" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/lashart_studio</a>
-                        <p className="text-zinc-600 text-xs mb-3">→ @lashart_studio · WhatsApp +421 917 066 888</p>
+                        <p className="text-zinc-600 text-xs mb-1">→ @lashart_studio · WhatsApp +421 917 066 888</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ DM odoslaná</p>
                         <a href="https://wa.me/421917066888" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
-                            style={{ background: "#9b6fa0" }}>
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400 mb-3">
                             Otvoriť WhatsApp →
                         </a>
-                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
-                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli:</p>
-                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{LASHART_DM}</p>
-                        </div>
                         <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lashart-studio" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
                             Pozrieť demo →
@@ -317,16 +314,12 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/lovely_cakeset" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/lovely_cakeset</a>
-                        <p className="text-zinc-600 text-xs mb-3">→ @lovely_cakeset · WhatsApp +380 66 194 9387</p>
+                        <p className="text-zinc-600 text-xs mb-1">→ @lovely_cakeset · WhatsApp +380 66 194 9387</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ DM odoslaná</p>
                         <a href="https://wa.me/380661949387" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
-                            style={{ background: "#c97d4e" }}>
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400 mb-3">
                             Otvoriť WhatsApp →
                         </a>
-                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
-                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli:</p>
-                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{CAKESET_DM}</p>
-                        </div>
                         <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lovely-cakeset" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
                             Pozrieť demo →
@@ -343,16 +336,12 @@ export default function SendOutreach() {
                             <span className="text-xl font-black">400 €</span>
                         </div>
                         <a href="https://instagram.com/martina_fong" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/martina_fong</a>
-                        <p className="text-zinc-600 text-xs mb-3">→ @martina_fong na Instagrame</p>
+                        <p className="text-zinc-600 text-xs mb-1">→ @martina_fong na Instagrame</p>
+                        <p className="text-green-500 text-xs font-bold mb-3">✓ DM odoslaná</p>
                         <a href="https://instagram.com/martina_fong" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
-                            style={{ background: "#7a9e7e" }}>
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400 mb-3">
                             Otvoriť Instagram →
                         </a>
-                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
-                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM:</p>
-                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{MARTINA_DM}</p>
-                        </div>
                         <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/martina-yoga" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
                             Pozrieť demo →
@@ -367,7 +356,7 @@ export default function SendOutreach() {
                         <span className="text-white font-black text-lg">4 000 €</span>
                         <span className="text-zinc-600 ml-2">= 10 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">5 odoslaných · 5 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">✓ Všetkých 10 odoslaných</p>
                 </div>
             </div>
         </div>
