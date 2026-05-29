@@ -97,14 +97,14 @@ Ak ťa to zaujalo, ozvi sa.
 Max
 +421 904 340 353`;
 
-const MARTINA_DM = `Ahoj Martina, volám sa Max — som webový vývojár z Bratislavy.
+const MARTINA_DM = `Hey Martina, I'm Max — a web developer based in Bratislava.
 
-Vidím že máš 3K followerov a učíš jogu aj pilates, ale žiadny web nemáš. Postavil som ti demo — elegantné, čisté, so sageovou farbou:
+I saw your profile — 3K followers, yoga and pilates, but no website. I built a demo to show you what it could look like:
 https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/martina-yoga
 
-Hodiny, o tebe, kontakt — všetko na jednom mieste. Za 400 € hotové do týždňa.
+Classes, about you, booking — all in one place. €400, done in a week.
 
-Daj vedieť 🌿`;
+Let me know 🌿`;
 
 function encode(s: string) {
     return encodeURIComponent(s);
