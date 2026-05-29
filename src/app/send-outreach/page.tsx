@@ -132,6 +132,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/chaos_bratislava" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/chaos_bratislava</a>
                         <p className="text-zinc-500 text-xs mb-1">→ chaosbratislavamma@gmail.com</p>
                         <p className="text-green-500 text-xs font-bold mb-4">✓ Odoslané</p>
                         <a
@@ -151,6 +152,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/onakotattoo" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/onakotattoo</a>
                         <p className="text-zinc-500 text-xs mb-1">→ info@onakotattoo.com</p>
                         <p className="text-green-500 text-xs font-bold mb-4">✓ Odoslané</p>
                         <a
@@ -170,6 +172,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/patrisha_ink" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/patrisha_ink</a>
                         <p className="text-zinc-500 text-xs mb-1">→ @patrisha_ink na Instagrame</p>
                         <p className="text-green-500 text-xs font-bold mb-4">✓ DM odoslaný</p>
                         <a href="https://instagram.com/patrisha_ink" target="_blank" rel="noopener noreferrer"
@@ -187,6 +190,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/kd_makeupartist" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/kd_makeupartist</a>
                         <p className="text-zinc-600 text-xs mb-4">→ kd.krizanovicova@gmail.com · Draft v Gmail čaká na odoslanie</p>
                         <a href={`mailto:kd.krizanovicova@gmail.com?subject=${encodeURIComponent("Hotový web pre makeup artistku — demo pripravené")}`}
                             className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black">
@@ -203,6 +207,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/mari.iayurchenko" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/mari.iayurchenko</a>
                         <p className="text-zinc-600 text-xs mb-4">→ mariiayurchenko1499@gmail.com</p>
                         <a href={`mailto:mariiayurchenko1499@gmail.com?subject=${encode("Demo webu pre fotografku — Mariia Yurchenko")}&body=${encode(MARIIA_BODY)}`}
                             className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black mb-3">
@@ -223,6 +228,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/vladimir_holota" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/vladimir_holota</a>
                         <p className="text-zinc-600 text-xs mb-4">→ vladimir.holota@gmail.com</p>
                         <a href={`mailto:vladimir.holota@gmail.com?subject=${encode("Demo webu pre Vladimíra Holotu — personal trainer")}&body=${encode(VLADIMIR_BODY)}`}
                             className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
@@ -244,6 +250,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/djsnowman_official" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/djsnowman_official</a>
                         <p className="text-zinc-600 text-xs mb-4">→ petrusradoslav@gmail.com</p>
                         <a href={`mailto:petrusradoslav@gmail.com?subject=${encode("Postavil som ti web — DJ Snowman demo")}&body=${encode(DJSNOWMAN_BODY)}`}
                             className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-black mb-3 hover:opacity-90"
@@ -265,6 +272,7 @@ export default function SendOutreach() {
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
+                        <a href="https://instagram.com/martina_fong" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/martina_fong</a>
                         <p className="text-zinc-600 text-xs mb-3">→ @martina_fong na Instagrame</p>
                         <a href="https://instagram.com/martina_fong" target="_blank" rel="noopener noreferrer"
                             className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
