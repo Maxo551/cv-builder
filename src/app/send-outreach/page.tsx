@@ -55,24 +55,6 @@ Galéria, štýly, booking cez Instagram — všetko na jednom mieste. Za 400 �
 
 Daj vedieť 🌸`;
 
-const OLHA_DM = `Ahoj Oľha, volám sa Max — som webový vývojár z Bratislavy.
-
-Sledujem tvoju prácu — 28K followerov, makeup akadémia, a žiadny vlastný web. Postavil som pre teba demo, elegantné, čierno-zlaté:
-https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/olha-makeup
-
-Portfolio, služby, kurzy, booking — všetko na jednom mieste. Za 400 € hotové do týždňa.
-
-Daj vedieť ✨`;
-
-const NAILS_DM = `Ahoj, volám sa Max — som webový vývojár z Bratislavy.
-
-Všimol som si váš Instagram @nails.pro.lab.official — 5 900 followerov a krásne práce, no žiadny vlastný web. Postavil som demo — ako by mohol vyzerať váš web:
-https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/nails-pro-lab
-
-Galéria, cenník, rezervácia — všetko na jednom mieste. Za 400 € hotové do týždňa.
-
-Ak vás to zaujalo, napíšte 💅`;
-
 function encode(s: string) {
     return encodeURIComponent(s);
 }
@@ -85,7 +67,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        3 emaily + 3 Instagram DM — <strong className="text-white">potenciál 2 400 €</strong>
+                        2 emaily + 1 DM odoslané · 1 draft čaká — <strong className="text-white">potenciál 1 600 €</strong>
                     </p>
                 </div>
 
@@ -145,72 +127,31 @@ export default function SendOutreach() {
                         </a>
                     </div>
 
-                    {/* Oľha Khomich — Instagram DM */}
-                    <div className="border border-yellow-900/30 rounded-2xl p-5 bg-zinc-900">
-                        <div className="flex items-start justify-between mb-3">
-                            <div>
-                                <h2 className="font-black text-lg">4. Oľha Khomich</h2>
-                                <p className="text-zinc-500 text-sm">28K Instagram, makeup akadémia, žiadny web</p>
-                            </div>
-                            <span className="text-xl font-black">400 €</span>
-                        </div>
-                        <p className="text-zinc-600 text-xs mb-3">→ @olyakhomichmakeup na Instagrame</p>
-                        <a href="https://instagram.com/olyakhomichmakeup" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-black mb-3"
-                            style={{ background: "#C9A84C" }}>
-                            Otvoriť Instagram @olyakhomichmakeup →
-                        </a>
-                        <div className="bg-zinc-800 rounded-xl p-3">
-                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM:</p>
-                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{OLHA_DM}</p>
-                        </div>
-                    </div>
-
                     {/* Karin kd_makeupartist — email (draft v Gmail) */}
                     <div className="border border-zinc-700/40 rounded-2xl p-5 bg-zinc-900">
                         <div className="flex items-start justify-between mb-3">
                             <div>
-                                <h2 className="font-black text-lg">5. Karin Križanovičová</h2>
+                                <h2 className="font-black text-lg">4. Karin Križanovičová</h2>
                                 <p className="text-zinc-500 text-sm">5.8K Instagram, makeup artist, žiadny web</p>
                             </div>
                             <span className="text-xl font-black">400 €</span>
                         </div>
-                        <p className="text-zinc-600 text-xs mb-4">→ kd.krizanovicova@gmail.com · Draft v Gmail pripravený</p>
+                        <p className="text-zinc-600 text-xs mb-4">→ kd.krizanovicova@gmail.com · Draft v Gmail čaká na odoslanie</p>
                         <a href={`mailto:kd.krizanovicova@gmail.com?subject=${encodeURIComponent("Hotový web pre makeup artistku — demo pripravené")}`}
                             className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black">
                             Otvoriť Gmail draft →
                         </a>
                     </div>
 
-                    {/* Nails Pro Lab — Instagram DM */}
-                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(212,160,160,0.4)" }}>
-                        <div className="flex items-start justify-between mb-3">
-                            <div>
-                                <h2 className="font-black text-lg">6. Nails Pro Lab</h2>
-                                <p className="text-zinc-500 text-sm">5.9K Instagram, nail salon, žiadny web</p>
-                            </div>
-                            <span className="text-xl font-black">400 €</span>
-                        </div>
-                        <p className="text-zinc-600 text-xs mb-3">→ @nails.pro.lab.official na Instagrame</p>
-                        <a href="https://instagram.com/nails.pro.lab.official" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3"
-                            style={{ background: "#D4A0A0" }}>
-                            Otvoriť Instagram @nails.pro.lab.official →
-                        </a>
-                        <div className="bg-zinc-800 rounded-xl p-3">
-                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM:</p>
-                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{NAILS_DM}</p>
-                        </div>
-                    </div>
                 </div>
 
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">2 400 €</span>
-                        <span className="text-zinc-600 ml-2">= 6 × 400 €</span>
+                        <span className="text-white font-black text-lg">1 600 €</span>
+                        <span className="text-zinc-600 ml-2">= 4 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">3 odoslaných · 3 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">3 odoslaných · 1 čaká na odoslanie</p>
                 </div>
             </div>
         </div>
