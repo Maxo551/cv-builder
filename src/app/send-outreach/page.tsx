@@ -57,59 +57,31 @@ Daj vedieť 🌸`;
 
 const MARIIA_BODY = `Dobrý deň Mariia,
 
-volám sa Max — som webový vývojár z Bratislavy. Sledujem vašu prácu na Instagrame — 14 000 sledovateľov a žiadny vlastný web je podľa mňa veľká škoda, lebo ľudia, ktorí si vás nájdu, nemajú kde získať viac info ani poslať dopyt.
+píšem vám, lebo som narazil na váš Instagram — 14-tisíc ľudí sleduje vašu prácu a pritom nemáte vlastný web. To ma celkom prekvapilo, lebo s takým portfóliom by ste mali mať miesto, kam ľudí pošlete, keď sa pýtajú na termíny a ceny.
 
-Postavil som pre vás demo — ako by mohol web vyzerať:
+Tak som vám jeden web rovno postavil, nech vidíte, čo myslím:
 https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/mariia-photo
 
-Dizajn je elegantný, minimalistický, so zameraním na fotografie — portfólio, sekcia o vás, cenník a kontaktná sekcia.
+Volám sa Max, robím weby v Bratislave. Toto je hotové demo presne pre vás — portfólio, niečo o vás, cenník a kontakt. Spravím vám to celé do týždňa za 400 €, aj s hostingom na prvý rok a mesiacom úprav navrch.
 
-Čo dostanete za 400 €:
-• Živá webová stránka do 7 dní od potvrdenia
-• Plne mobilná, rýchla, optimalizovaná pre SEO
-• Portfólio, cenník, kontakt — všetko čo je v deme + vaše úpravy
-• Hosting prvý rok zadarmo
-• 1 mesiac bezplatných úprav po spustení
+Ak sa vám to páči, ozvite sa a doladíme detaily.
 
-400 € fixná cena, možnosť rozložiť: 200 € pri zahájení, 200 € pri odovzdaní.
-
-Ak vás demo zaujalo, stačí odpovedať.
-
-S pozdravom,
-Maxim Šinkovič
+Max
 +421 904 340 353`;
 
-const VLADIMIR_BODY = `Dobrý deň Vladimír,
+const VLADIMIR_BODY = `Ahoj Vladimír,
 
-volám sa Max — som webový vývojár z Bratislavy. Videl som váš Instagram @vladimir_holota — 7 000 sledovateľov, 2x majster sveta, a žiadny vlastný web. To je škoda, lebo ľudia, ktorí vás hľadajú online, nemajú kde poslať dopyt ani zistiť ceny.
+natrafil som na tvoj Instagram — dvojnásobný majster sveta a žiadny web, to mi nedalo. Ľudia, čo ťa hľadajú, nemajú kde nájsť ceny ani ti napísať poriadny dopyt, všetko ide cez DM.
 
-Postavil som pre vás demo — ako by mohol web vyzerať:
+Postavil som ti rovno demo, nech vidíš, o čom hovorím:
 https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/vladimir-holota
 
-Čo dostanete za 400 €:
-• Živá webová stránka do 7 dní od potvrdenia
-• Plne mobilná verzia
-• Služby, o vás, kontakt + možnosť rezervácie — všetko čo je v deme + vaše úpravy
-• Základné SEO (aby vás ľudia našli pri hľadaní "personal trainer Bratislava")
-• Hosting prvý rok zadarmo
-• 1 mesiac bezplatných úprav po spustení
+Volám sa Max, robím weby v Bratislave. Toto je hotová ukážka pre teba — služby, niečo o tebe, kontakt aj rezervácia. Celé to spravím do týždňa za 400 €, aj s hostingom na prvý rok a mesiacom úprav.
 
-400 € fixná cena, možnosť rozložiť: 200 € pri zahájení, 200 € pri odovzdaní.
+Ak ťa to chytí, ozvi sa a doladíme to.
 
-Ak vás demo zaujalo, stačí odpísať.
-
-S pozdravom,
-Maxim Šinkovič
+Max
 +421 904 340 353`;
-
-const NEWSCHOOL_DM = `Ahoj, volám sa Max — som webový vývojár z Bratislavy.
-
-Videl som váš Instagram @newschoolsk — máte aktívne štúdio, krásne obsah, ale web newschoolsk.vercel.app je prázdny. Postavil som demo — ako by mohol skutočný web vyzerať:
-https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/newschool-dance
-
-Rozvrh hodín, štýly, kontakt + prihlásenie — všetko na jednom mieste. Za 400 € hotové do týždňa.
-
-Napíšte ak vás to zaujalo 💛`;
 
 function encode(s: string) {
     return encodeURIComponent(s);
@@ -123,7 +95,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        3 odoslané · 4 nové na odoslanie — <strong className="text-white">potenciál 2 800 €</strong>
+                        3 odoslané · 3 nové na odoslanie — <strong className="text-white">potenciál 2 400 €</strong>
                     </p>
                 </div>
 
@@ -240,40 +212,15 @@ export default function SendOutreach() {
                         </a>
                     </div>
 
-                    {/* Newschool Dance — Instagram DM */}
-                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(255,214,0,0.25)" }}>
-                        <div className="flex items-start justify-between mb-3">
-                            <div>
-                                <h2 className="font-black text-lg">7. Newschool Dance Studio</h2>
-                                <p className="text-zinc-500 text-sm">1.8K Instagram, prázdny Vercel web, WhatsApp dostupný</p>
-                            </div>
-                            <span className="text-xl font-black">400 €</span>
-                        </div>
-                        <p className="text-zinc-600 text-xs mb-3">→ @newschoolsk na Instagrame · WhatsApp +421 908 790 216</p>
-                        <a href="https://wa.me/421908790216" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-black mb-3 hover:opacity-90"
-                            style={{ background: "#FFD600" }}>
-                            Otvoriť WhatsApp →
-                        </a>
-                        <div className="bg-zinc-800 rounded-xl p-3 mb-2">
-                            <p className="text-zinc-400 text-xs mb-2 font-bold uppercase tracking-wider">Skopíruj a pošli ako DM / WhatsApp:</p>
-                            <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">{NEWSCHOOL_DM}</p>
-                        </div>
-                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/newschool-dance" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
-                            Pozrieť demo →
-                        </a>
-                    </div>
-
                 </div>
 
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">2 800 €</span>
-                        <span className="text-zinc-600 ml-2">= 7 × 400 €</span>
+                        <span className="text-white font-black text-lg">2 400 €</span>
+                        <span className="text-zinc-600 ml-2">= 6 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">3 odoslaných · 4 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">3 odoslaných · 3 čakajú na odoslanie</p>
                 </div>
             </div>
         </div>
