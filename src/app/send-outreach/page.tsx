@@ -143,6 +143,20 @@ Ozvite sa ak vás to zaujíma.
 Max
 +421 904 340 353`;
 
+const DIELNA_BODY = `Dobrý deň,
+
+volám sa Max — robím weby v Bratislave. Narazil som na váš Instagram @dielnakeramicka — 1 400 followerov, plný skvelých záberov z kurzov v Starej Tržnici, ale žiadna webstránka kde by si záujemcovia našli info, ceny a prihlásili sa.
+
+Postavil som vám demo, ako by to mohlo vyzerať:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/dielna-keramicka
+
+Krúžky, workshopy, teambuilding, detské kurzy — prehľadne na jednom mieste, s prihlasovacím formulárom. Za 400 € hotové do týždňa, hosting prvý rok zadarmo.
+
+Ozvite sa ak vás to zaujíma.
+
+Max
++421 904 340 353`;
+
 const MARTINA_DM = `Hey Martina, I'm Max — a web developer based in Bratislava.
 
 I saw your profile — 3K followers, yoga and pilates, but no website. I built a demo to show you what it could look like:
@@ -164,7 +178,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        10 odoslaných · 2 nové — <strong className="text-white">potenciál 4 800 €</strong>
+                        10 odoslaných · 3 nové — <strong className="text-white">potenciál 5 200 €</strong>
                     </p>
                 </div>
 
@@ -421,13 +435,35 @@ export default function SendOutreach() {
                         </a>
                     </div>
 
+                    {/* Dielňa Keramika — email */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(181,83,60,0.35)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">13. Dielňa Keramika</h2>
+                                <p className="text-zinc-500 text-sm">1.4K Instagram · keramické kurzy · Stará Tržnica · iba Instagram a Facebook</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <a href="https://instagram.com/dielnakeramicka" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/dielnakeramicka</a>
+                        <p className="text-zinc-600 text-xs mb-4">→ dielnakeramicka@gmail.com</p>
+                        <a href={`mailto:dielnakeramicka@gmail.com?subject=${encode("Demo webu pre Dielňu Keramika — pripravené")}&body=${encode(DIELNA_BODY)}`}
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#b5533c" }}>
+                            Otvoriť v Gmail →
+                        </a>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/dielna-keramicka" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">4 800 €</span>
-                        <span className="text-zinc-600 ml-2">= 12 × 400 €</span>
+                        <span className="text-white font-black text-lg">5 200 €</span>
+                        <span className="text-zinc-600 ml-2">= 13 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">10 odoslaných · 2 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">10 odoslaných · 3 čakajú na odoslanie</p>
                 </div>
             </div>
         </div>
