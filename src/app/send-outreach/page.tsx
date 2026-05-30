@@ -157,6 +157,46 @@ Ozvite sa ak vás to zaujíma.
 Max
 +421 904 340 353`;
 
+const FLOWERS_DM = `Zdravím, volám sa Max — robím weby v Bratislave.
+
+Videl som váš Instagram @flowers_studio.sk — 6 400 sledovateľov, krásne kytice, objednávky cez DM a telefón. Kúsok vám chýba — poriadna webstránka kde si zákazníci môžu priamo objednať, pozrieť ceny a galériu, bez toho aby čakali na odpoveď v správach.
+
+Postavil som vám demo, ako by to mohlo vyzerať:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/flowers-studio-ba
+
+Svadobné kvety, darčeky, firemné dekorácie, objednávkový formulár — všetko na jednom mieste. Za 400 € hotové do týždňa, hosting prvý rok zadarmo.
+
+Ozvi sa ak ťa to zaujíma.
+
+Max
++421 904 340 353`;
+
+const YESNAILS_DM = `Ahoj, som Max — robím weby v Bratislave.
+
+Narazil som na @yes_nails_ba — 5 000+ followerov, skvelé práce, ale webstránku nemáš, len Taplink. To nie je to isté.
+
+Postavil som ti demo, ako by mohol skutočný web vyzerať:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/yes-nails-ba
+
+Gélovanie, manikúra, pedikúra, laminácia obočia — prehľadne s cenníkom a rezervačným formulárom. 400 €, hotové do týždňa.
+
+Ozvi sa ak ťa to zaujíma 💅
+
+Max`;
+
+const LARI_DM = `Ahoj, som Max — robím weby v Bratislave.
+
+Videl som @lari_masaz_bratislava — máš aktívny Instagram, ale žiadnu webstránku kde by sa záujemcovia mohli pozrieť na ponuku a rezervovať termín.
+
+Postavil som ti demo, ako by to mohlo vyzerať:
+https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lari-masaz
+
+Relaxačná, športová, reflexológia — prehľadne s cenníkom a kontaktom. Za 400 € hotové do týždňa.
+
+Ozvi sa ak ťa to zaujíma 🌿
+
+Max`;
+
 const MARTINA_DM = `Hey Martina, I'm Max — a web developer based in Bratislava.
 
 I saw your profile — 3K followers, yoga and pilates, but no website. I built a demo to show you what it could look like:
@@ -178,7 +218,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        10 odoslaných · 3 nové — <strong className="text-white">potenciál 5 200 €</strong>
+                        10 odoslaných · 6 nové — <strong className="text-white">potenciál 6 400 €</strong>
                     </p>
                 </div>
 
@@ -457,13 +497,79 @@ export default function SendOutreach() {
                         </a>
                     </div>
 
+                    {/* Flowers Studio BA — DM/call */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(45,90,39,0.4)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">14. Flowers Bratislava</h2>
+                                <p className="text-zinc-500 text-sm">6.4K Instagram · floristka · doručenie · iba IG + telefón</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <a href="https://instagram.com/flowers_studio.sk" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/flowers_studio.sk</a>
+                        <p className="text-zinc-600 text-xs mb-4">→ DM na Instagram alebo 📞 +421 918 446 390</p>
+                        <a href="https://instagram.com/flowers_studio.sk" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#2d5a27" }}>
+                            Otvoriť Instagram DM →
+                        </a>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/flowers-studio-ba" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
+                    {/* YES Nails BA — DM */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(196,148,138,0.35)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">15. YES Nails BA</h2>
+                                <p className="text-zinc-500 text-sm">5.1K Instagram · manikúra, pedikúra, laminácia · iba Taplink (nie web)</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <a href="https://instagram.com/yes_nails_ba" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/yes_nails_ba</a>
+                        <p className="text-zinc-600 text-xs mb-4">→ DM na Instagram</p>
+                        <a href="https://instagram.com/yes_nails_ba" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#a06070" }}>
+                            Otvoriť Instagram DM →
+                        </a>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/yes-nails-ba" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
+                    {/* Lari Masáž — DM */}
+                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(122,90,48,0.35)" }}>
+                        <div className="flex items-start justify-between mb-3">
+                            <div>
+                                <h2 className="font-black text-lg">16. Lari Masáž</h2>
+                                <p className="text-zinc-500 text-sm">Aktívny Instagram · masérska súkromná prax · žiadna webstránka</p>
+                            </div>
+                            <span className="text-xl font-black">400 €</span>
+                        </div>
+                        <a href="https://instagram.com/lari_masaz_bratislava" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/lari_masaz_bratislava</a>
+                        <p className="text-zinc-600 text-xs mb-4">→ DM na Instagram</p>
+                        <a href="https://instagram.com/lari_masaz_bratislava" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition text-white mb-3 hover:opacity-90"
+                            style={{ background: "#7a5a30" }}>
+                            Otvoriť Instagram DM →
+                        </a>
+                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/lari-masaz" target="_blank" rel="noopener noreferrer"
+                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
+                            Pozrieť demo →
+                        </a>
+                    </div>
+
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">5 200 €</span>
-                        <span className="text-zinc-600 ml-2">= 13 × 400 €</span>
+                        <span className="text-white font-black text-lg">6 400 €</span>
+                        <span className="text-zinc-600 ml-2">= 16 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">10 odoslaných · 3 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">10 odoslaných · 6 čakajú na odoslanie</p>
                 </div>
             </div>
         </div>
