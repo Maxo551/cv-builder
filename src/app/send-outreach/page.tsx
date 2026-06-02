@@ -115,20 +115,6 @@ Galéria, ponuka, objednávka — všetko na jednom mieste. Za 400 € hotové d
 
 Napíšte ak vás to zaujalo 🎂`;
 
-const DIANA_BODY = `Ahoj Diana,
-
-natrafil som na tvoj Instagram — 31-tisíc followerov a link v bite vedie na Gamma prezentáciu. To ma zaujalo, lebo niekto s takým portfóliom si zaslúži poriadnu webstránku, nie slide deck.
-
-Postavil som ti demo:
-https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/diana-bajbar
-
-Volám sa Max, robím weby v Bratislave. Spravím ti to do týždňa za 400 € — galéria premien, info o tebe, rezervácia, všetko.
-
-Ozvi sa ak ťa to zaujíma.
-
-Max
-+421 904 340 353`;
-
 const ATELIER_BODY = `Dobrý deň,
 
 volám sa Max — robím weby v Bratislave. Videl som váš Instagram @atelier_tvor.ba — 3-tisíc followerov a skvelé kurzy, ale váš web (ateliertvorba.sk) je len parkovacia stránka bez obsahu.
@@ -218,7 +204,7 @@ export default function SendOutreach() {
                     <p className="text-xs tracking-widest text-zinc-500 uppercase mb-2">Sales outreach</p>
                     <h1 className="text-3xl font-black mb-2">Odošli outreach</h1>
                     <p className="text-zinc-400 text-sm">
-                        10 odoslaných · 6 nové — <strong className="text-white">potenciál 6 400 €</strong>
+                        10 odoslaných · 5 nové — <strong className="text-white">potenciál 6 000 €</strong>
                     </p>
                 </div>
 
@@ -432,32 +418,11 @@ export default function SendOutreach() {
 
                 </div>
 
-                    {/* Diana Bajbar — email */}
-                    <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(212,212,212,0.15)" }}>
-                        <div className="flex items-start justify-between mb-3">
-                            <div>
-                                <h2 className="font-black text-lg">11. Diana Bajbar</h2>
-                                <p className="text-zinc-500 text-sm">31K Instagram · Master Hair Colorist · link v bio = Gamma slide deck</p>
-                            </div>
-                            <span className="text-xl font-black">400 €</span>
-                        </div>
-                        <a href="https://instagram.com/diana_bajbar_haircolorist" target="_blank" rel="noopener noreferrer" className="text-zinc-600 text-xs hover:text-zinc-300 transition-colors block mb-1">↗ instagram.com/diana_bajbar_haircolorist</a>
-                        <p className="text-zinc-600 text-xs mb-4">→ DM na Instagram alebo +421 904 805 184</p>
-                        <a href={`mailto:?subject=${encode("Demo webu pre Diana Bajbar — haircolorist")}&body=${encode(DIANA_BODY)}`}
-                            className="block w-full text-center py-3 px-6 rounded-xl font-bold text-sm transition bg-white hover:bg-zinc-100 text-black mb-3">
-                            Otvoriť v Gmail →
-                        </a>
-                        <a href="https://cv-builder-git-demos-maxo551s-projects.vercel.app/demo/diana-bajbar" target="_blank" rel="noopener noreferrer"
-                            className="block w-full text-center py-2 px-6 rounded-xl text-xs transition bg-zinc-800 hover:bg-zinc-700 text-zinc-400">
-                            Pozrieť demo →
-                        </a>
-                    </div>
-
                     {/* Ateliér TVOR.BA — email */}
                     <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(139,105,20,0.35)" }}>
                         <div className="flex items-start justify-between mb-3">
                             <div>
-                                <h2 className="font-black text-lg">12. Ateliér TVOR.BA</h2>
+                                <h2 className="font-black text-lg">11. Ateliér TVOR.BA</h2>
                                 <p className="text-zinc-500 text-sm">3K Instagram · keramické kurzy · doména = prázdna parkovacia stránka</p>
                             </div>
                             <span className="text-xl font-black">400 €</span>
@@ -479,7 +444,7 @@ export default function SendOutreach() {
                     <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(181,83,60,0.35)" }}>
                         <div className="flex items-start justify-between mb-3">
                             <div>
-                                <h2 className="font-black text-lg">13. Dielňa Keramika</h2>
+                                <h2 className="font-black text-lg">12. Dielňa Keramika</h2>
                                 <p className="text-zinc-500 text-sm">1.4K Instagram · keramické kurzy · Stará Tržnica · iba Instagram a Facebook</p>
                             </div>
                             <span className="text-xl font-black">400 €</span>
@@ -501,7 +466,7 @@ export default function SendOutreach() {
                     <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(45,90,39,0.4)" }}>
                         <div className="flex items-start justify-between mb-3">
                             <div>
-                                <h2 className="font-black text-lg">14. Flowers Bratislava</h2>
+                                <h2 className="font-black text-lg">13. Flowers Bratislava</h2>
                                 <p className="text-zinc-500 text-sm">6.4K Instagram · floristka · doručenie · iba IG + telefón</p>
                             </div>
                             <span className="text-xl font-black">400 €</span>
@@ -523,7 +488,7 @@ export default function SendOutreach() {
                     <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(196,148,138,0.35)" }}>
                         <div className="flex items-start justify-between mb-3">
                             <div>
-                                <h2 className="font-black text-lg">15. YES Nails BA</h2>
+                                <h2 className="font-black text-lg">14. YES Nails BA</h2>
                                 <p className="text-zinc-500 text-sm">5.1K Instagram · manikúra, pedikúra, laminácia · iba Taplink (nie web)</p>
                             </div>
                             <span className="text-xl font-black">400 €</span>
@@ -545,7 +510,7 @@ export default function SendOutreach() {
                     <div className="border rounded-2xl p-5 bg-zinc-900" style={{ borderColor: "rgba(122,90,48,0.35)" }}>
                         <div className="flex items-start justify-between mb-3">
                             <div>
-                                <h2 className="font-black text-lg">16. Lari Masáž</h2>
+                                <h2 className="font-black text-lg">15. Lari Masáž</h2>
                                 <p className="text-zinc-500 text-sm">Aktívny Instagram · masérska súkromná prax · žiadna webstránka</p>
                             </div>
                             <span className="text-xl font-black">400 €</span>
@@ -566,10 +531,10 @@ export default function SendOutreach() {
                 <div className="text-center p-4 bg-zinc-900 border border-zinc-800 rounded-xl">
                     <p className="text-zinc-400 text-sm">
                         Celkový potenciál:{" "}
-                        <span className="text-white font-black text-lg">6 400 €</span>
-                        <span className="text-zinc-600 ml-2">= 16 × 400 €</span>
+                        <span className="text-white font-black text-lg">6 000 €</span>
+                        <span className="text-zinc-600 ml-2">= 15 × 400 €</span>
                     </p>
-                    <p className="text-green-600 text-xs mt-1 font-bold">10 odoslaných · 6 čakajú na odoslanie</p>
+                    <p className="text-green-600 text-xs mt-1 font-bold">10 odoslaných · 5 čakajú na odoslanie</p>
                 </div>
             </div>
         </div>
